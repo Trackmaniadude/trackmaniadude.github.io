@@ -82,7 +82,7 @@ function drawTank() {
 	var shape = document.getElementById("shape").value;
 
 	//Dominator Base
-	if (shape === "dom") {
+	if (shape === "dominator") {
 	ctx.save();
 	ctx.globalAlpha = tankalpha;
 	ctx.fillStyle = "#555555";
@@ -916,7 +916,7 @@ function drawTank() {
 		ctx.restore();
 	}
 
-	if (shape === "dom") {
+	if (shape === "dominator") {
 		ctx.save();
 		ctx.beginPath();
 		ctx.arc(tankpointx, tankpointy, tanksize, 0, Math.PI * 2, true);
