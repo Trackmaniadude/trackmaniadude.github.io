@@ -14,6 +14,7 @@ var shapetimer = 120;
 var undos = [];
 var mirrorBarrels = 1;
 var nShape = 0;
+var changelog = 0
 
 var tankpointx = c.width / 2;
 var tankpointy = c.height / 2;
@@ -209,6 +210,14 @@ function angle(cx, cy, ex, ey) {
 	//if (theta < 0) theta = 360 + theta; // range [0, 360)
 	//theta *= (Math.PI / 180);
 	return theta;
+}
+
+function togglelog() {
+	if (changelog === 0) {
+		changelog = 1
+	} else {
+		changelog = 0
+	}
 }
 
 function editButtonClick() {
