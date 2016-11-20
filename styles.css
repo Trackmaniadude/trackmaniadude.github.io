@@ -225,7 +225,7 @@ kbd {
 }
 
 .spawn label:after {
-	content: '⬟';
+	content: 'â¬Ÿ';
 	color: #00E16E;
 	text-shadow: none;
 	width: 25px;
@@ -353,18 +353,18 @@ kbd {
 }
 
 #clbutton {
-	margin-left: 2005px;
-	width: 60px;
+	margin-left: 263px;
+	width: 75px;
 }
 
-#cl:hover {
-	background-color: #9DCD84;
-	background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(195,255,164,1) 50%);
+#clbutton:hover {
+	background-color: #849BCD;
+	background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(164,193,255,1) 50%);
 }
 
-#cl:active {
-	background-color: #90CC71;
-	background-image: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(116,164,91,1) 50%);
+#clbutton:active {
+	background-color: #728FCD;
+	background-image: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(91,114,164,1) 50%);
 }
 
 #color {
