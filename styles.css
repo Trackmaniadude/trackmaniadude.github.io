@@ -774,7 +774,7 @@ kbd {
 	padding: 3px;
 	position: fixed;
 	left:10px ;
-	bottom:10px ;
+	bottom:0px ;
 	width: 420px;
 }
 
@@ -788,7 +788,7 @@ kbd {
 	padding: 3px;
 	position: fixed;
 	right:10px;
-	bottom:10px ;
+	bottom:0px ;
 	width: 420px;
 }
 
