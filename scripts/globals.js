@@ -14,7 +14,7 @@ var shapetimer = 120;
 var undos = [];
 var mirrorBarrels = 1;
 var nShape = 0;
-var changelog = 1
+var changelog = 0
 
 var tankpointx = c.width / 2;
 var tankpointy = c.height / 2;
