@@ -215,17 +215,17 @@ function angle(cx, cy, ex, ey) {
 function togglelog() {
 	if (changelog === 0) {
 		changelog = 1
-		var elements = document.getElementsByClassName("editbuttons");
+		var elements = document.getElementsByClassName("cLog");
 
 		for (var i = 0; i < elements.length; i++) {
-			elements[i].style.visibility = hidden;
+			elements[i].style.visibility = "hidden";
 		}
 	} else {
 		changelog = 0
-		var elements = document.getElementsByClassName("editbuttons");
+		var elements = document.getElementsByClassName("cLog");
 
 		for (var i = 0; i < elements.length; i++) {
-			elements[i].style.visibility = visible;
+			elements[i].style.visibility = "visible";
 		}
 	}
 }
