@@ -786,7 +786,9 @@ kbd {
 	line-height: 14px;
 	padding: 3px;
 	position: fixed;
-	bottom: 0;
+	margin-left: -210px;
+	left: 50%;
+	top:50px ;
 	width: 420px;
 }
 
