@@ -16,6 +16,12 @@ var mirrorBarrels = 1;
 var nShape = 0;
 var changelog = 0
 
+var elements = document.getElementsByClassName("cLog");
+
+for (var i = 0; i < elements.length; i++) {
+	elements[i].style.visibility = "hidden";
+}
+
 var tankpointx = c.width / 2;
 var tankpointy = c.height / 2;
 
@@ -218,14 +224,14 @@ function togglelog() {
 		var elements = document.getElementsByClassName("cLog");
 
 		for (var i = 0; i < elements.length; i++) {
-			elements[i].style.visibility = "hidden";
+			elements[i].style.visibility = "visible";
 		}
 	} else {
 		changelog = 0
 		var elements = document.getElementsByClassName("cLog");
 
 		for (var i = 0; i < elements.length; i++) {
-			elements[i].style.visibility = "visible";
+			elements[i].style.visibility = "hidden";
 		}
 	}
 }
