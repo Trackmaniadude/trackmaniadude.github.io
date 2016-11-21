@@ -788,7 +788,7 @@ kbd {
 	padding: 3px;
 	position: fixed;
 	right:10px;
-	bottom:0px ;
+	top:50px ;
 	width: 420px;
 	visibility: hidden;
 }
