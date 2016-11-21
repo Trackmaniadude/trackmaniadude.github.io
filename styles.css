@@ -790,6 +790,7 @@ kbd {
 	right:10px;
 	bottom:0px ;
 	width: 420px;
+	visibility: hidden;
 }
 
 #version {
