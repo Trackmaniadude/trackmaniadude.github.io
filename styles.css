@@ -484,7 +484,7 @@ kbd {
 	background-color: #D68165;
 }
 /* Tooltips */
-.info , .warninginfo{
+.info , .warninginfo, .cLog{
 	position: relative;
 	font: 16px ubuntu;
 	font-weight: 600;
@@ -750,7 +750,7 @@ kbd {
 	text-align: center;
 }
 
-.warning:active {
+.warning:active {arning 
 	background-color: rgba(194,18,18,0.9);
 	background-image: none;
 	color: yellow;
