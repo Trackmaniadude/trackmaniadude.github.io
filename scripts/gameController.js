@@ -926,6 +926,18 @@ function drawTank() {
 		ctx.restore();
 		drawBullet(tankpointx, tankpointy, tanksize, tankalpha);
 	}
+	
+	if (shape === "star") {
+		ctx.save();
+		ctx.globalAlpha = tankalpha;
+		ctx.fillStyle = ctx.fillStyle = document.getElementById("color").value;
+		if (editmode === false) {
+			drawStar(tankpointx, tankpointy, tanksize, (angle(tankpointx, tankpointy, mouse.x, mouse.y) * (Math.PI / 180))/2, "#FFE869", tanksize/2);
+		} else {
+			drawStar(tankpointx, tankpointy, tanksize, 0, "#FFE869", tanksize/2);
+		}
+		
+	}
 
 	//Draw the body of the tank on top of everything.
 	
