@@ -927,13 +927,14 @@ function drawTank() {
 		drawBullet(tankpointx, tankpointy, tanksize, tankalpha);
 	}
 	
+	//WORKINGHERE
 	if (shape === "star") {
 		ctx.save();
 		ctx.globalAlpha = tankalpha;
 		if (editmode === false) {
 			drawStar(tankpointx, tankpointy, tanksize, angle(tankpointx, tankpointy, mouse.x, mouse.y), document.getElementById("color").value, tanksize/2);
 		} else {
-			drawStar(tankpointx, tankpointy, tanksize, 0, document.getElementById("color").value, tanksize/2);
+			drawStar(tankpointx, tankpointy, tanksize, 90, document.getElementById("color").value, tanksize/2);
 		}
 		
 	}
