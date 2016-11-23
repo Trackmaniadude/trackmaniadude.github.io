@@ -924,12 +924,20 @@ function drawTank() {
 		ctx.clip();
 		ctx.clearRect(tankpointx - tanksize, tankpointy - tanksize, tanksize * 2, tanksize * 2);
 		ctx.restore();
-		drawBullet(tankpointx, tankpointy, tanksize, tankalpha);
+		drawBullet(tankpointx, tankpointy, tanksize, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-15);
+	}
+	
+	if (shape === "hexagon") {
+		ctx.globalAlpha = tankalpha;
+		if (editmode === false) {
+			drawPoly(tankpointx, tankpointy, tanksize, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-15, document.getElementById("color").value, 6)
+		} else {
+			drawPoly(tankpointx, tankpointy, tanksize, -90, document.getElementById("color").value, 6)
+		}
 	}
 	
 	//WORKINGHERE
 	if (shape === "star") {
-		ctx.save();
 		ctx.globalAlpha = tankalpha;
 		if (editmode === false) {
 			drawStar(tankpointx, tankpointy, tanksize, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-15, document.getElementById("color").value, tanksize/2);
