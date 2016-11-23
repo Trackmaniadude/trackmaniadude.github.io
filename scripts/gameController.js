@@ -598,154 +598,21 @@ function drawTank() {
 	}
 
 	if (shape === "pentagon") {
-		ctx.save();
-		ctx.translate(tankpointx, tankpointy);
-		ctx.beginPath();
-		if (editmode === false) {
-			ctx.rotate(angle(tankpointx, tankpointy, mouse.x, mouse.y) * (Math.PI / 180));
-		}
-		ctx.rotate(90 * (Math.PI / 180));
-		ctx.moveTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.closePath();
-		ctx.clip();
-		ctx.translate(-tankpointx, -tankpointy);
-		ctx.clearRect(0, 0, c.width, c.height);
-		ctx.restore();
-
-		ctx.save();
 		ctx.globalAlpha = tankalpha;
-		ctx.strokeStyle = "#555555";
-		ctx.lineWidth = 5;
-		ctx.fillStyle = document.getElementById("color").value;
-		ctx.translate(tankpointx, tankpointy);
-		ctx.beginPath();
 		if (editmode === false) {
-			ctx.rotate(angle(tankpointx, tankpointy, mouse.x, mouse.y) * (Math.PI / 180));
+			drawPoly(tankpointx, tankpointy, tanksize+10, (angle(tankpointx, tankpointy, mouse.x, mouse.y))+18, document.getElementById("color").value, 5)
+		} else {
+			drawPoly(tankpointx, tankpointy, tanksize+10, 18, document.getElementById("color").value, 5)
 		}
-		ctx.rotate(90 * (Math.PI / 180));
-		ctx.moveTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 5) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.closePath();
-		ctx.fill();
-		ctx.stroke();
-		ctx.restore();
-
 	}
 
 	if (shape === "mothership") {
-		ctx.save();
-		ctx.translate(tankpointx, tankpointy);
-		ctx.beginPath();
-		if (editmode === false) {
-			ctx.rotate(angle(tankpointx, tankpointy, mouse.x, mouse.y) * (Math.PI / 180));
-		}
-		ctx.rotate(90 * (Math.PI / 180));
-		ctx.moveTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.closePath();
-		ctx.clip();
-		ctx.translate(-tankpointx, -tankpointy);
-		ctx.clearRect(0, 0, c.width, c.height);
-		ctx.restore();
-
-		ctx.save();
 		ctx.globalAlpha = tankalpha;
-		ctx.strokeStyle = "#555555";
-		ctx.lineWidth = 5;
-		ctx.fillStyle = document.getElementById("color").value;
-		ctx.translate(tankpointx, tankpointy);
-		ctx.beginPath();
 		if (editmode === false) {
-			ctx.rotate(angle(tankpointx, tankpointy, mouse.x, mouse.y) * (Math.PI / 180));
+			drawPoly(tankpointx, tankpointy, tanksize+2, (angle(tankpointx, tankpointy, mouse.x, mouse.y)), document.getElementById("color").value, 16)
+		} else {
+			drawPoly(tankpointx, tankpointy, tanksize+2, 0, document.getElementById("color").value, 16)
 		}
-		ctx.rotate(90 * (Math.PI / 180));
-		ctx.moveTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.rotate((360 / 16) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 3));
-		ctx.closePath();
-		ctx.fill();
-		ctx.stroke();
-		ctx.restore();
 	}
 
 	if (shape === "spike") {
@@ -930,9 +797,18 @@ function drawTank() {
 	if (shape === "hexagon") {
 		ctx.globalAlpha = tankalpha;
 		if (editmode === false) {
-			drawPoly(tankpointx, tankpointy, tanksize, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-15, document.getElementById("color").value, 6)
+			drawPoly(tankpointx, tankpointy, tanksize+6, (angle(tankpointx, tankpointy, mouse.x, mouse.y)), document.getElementById("color").value, 6)
 		} else {
-			drawPoly(tankpointx, tankpointy, tanksize, -90, document.getElementById("color").value, 6)
+			drawPoly(tankpointx, tankpointy, tanksize+6, 0, document.getElementById("color").value, 6)
+		}
+	}
+
+	if (shape === "octagon") {
+		ctx.globalAlpha = tankalpha;
+		if (editmode === false) {
+			drawPoly(tankpointx, tankpointy, tanksize+8, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-22.5, document.getElementById("color").value, 8)
+		} else {
+			drawPoly(tankpointx, tankpointy, tanksize+8, 22.5, document.getElementById("color").value, 8)
 		}
 	}
 	
@@ -940,9 +816,9 @@ function drawTank() {
 	if (shape === "star") {
 		ctx.globalAlpha = tankalpha;
 		if (editmode === false) {
-			drawStar(tankpointx, tankpointy, tanksize, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-15, document.getElementById("color").value, tanksize/2);
+			drawStar(tankpointx, tankpointy, tanksize+10, (angle(tankpointx, tankpointy, mouse.x, mouse.y))-15, document.getElementById("color").value, (tanksize+10)/2);
 		} else {
-			drawStar(tankpointx, tankpointy, tanksize, -90, document.getElementById("color").value, tanksize/2);
+			drawStar(tankpointx, tankpointy, tanksize+10, -90, document.getElementById("color").value, (tanksize+10)/2);
 		}
 		
 	}
