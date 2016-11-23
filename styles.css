@@ -799,10 +799,3 @@ kbd {
 	right: 10px;
 	bottom: 0;
 }
-
-#gunC {
-	position: fixed;
-	right:10px;
-	top:50px ;
-	width: 50px;
-}
