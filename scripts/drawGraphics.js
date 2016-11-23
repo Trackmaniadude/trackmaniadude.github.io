@@ -2,7 +2,7 @@ function drawBarrel(a, xoffset, yoffset, width, length, alpha, isghost, type) {
 	ctx.save();
 	ctx.strokeStyle = "#555555";
 	ctx.lineWidth = 5;
-	ctx.fillStyle = document.getElementById("color2").value;
+	ctx.fillStyle = document.getElementById("colo2").value;
 	ctx.translate(tankpointx, tankpointy, 0);
 	if (editmode === false) {
 		ctx.rotate((angle(tankpointx, tankpointy, mouse.x, mouse.y) + a) * (Math.PI / 180));
