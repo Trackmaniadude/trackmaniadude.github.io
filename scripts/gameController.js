@@ -812,7 +812,6 @@ function drawTank() {
 		}
 	}
 	
-	//WORKINGHERE
 	if (shape === "star") {
 		ctx.globalAlpha = tankalpha;
 		if (editmode === false) {
@@ -823,6 +822,7 @@ function drawTank() {
 		
 	}
 	
+	//WORKINGHERE
 	if (shape === "mSmasher") {
 		ctx.save();
 		ctx.globalAlpha = tankalpha;
@@ -832,19 +832,19 @@ function drawTank() {
 		if (editmode === false) {
 			ctx.rotate(angle(tankpointx, tankpointy, mouse.x, mouse.y) * (Math.PI / 180));
 		}
-		ctx.moveTo(0, tanksize + (tanksize / 2.5));
+		ctx.moveTo(0, tanksize + (tanksize / 2));
 		ctx.rotate((360 / 6) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 2.5));
+		ctx.lineTo(0, tanksize + (tanksize / 2));
 		ctx.rotate((360 / 6) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 2.5));
+		ctx.lineTo(0, tanksize + (tanksize / 2));
 		ctx.rotate((360 / 6) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 2.5));
+		ctx.lineTo(0, tanksize + (tanksize / 2));
 		ctx.rotate((360 / 6) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 2.5));
+		ctx.lineTo(0, tanksize + (tanksize / 2));
 		ctx.rotate((360 / 6) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 2.5));
+		ctx.lineTo(0, tanksize + (tanksize / 2));
 		ctx.rotate((360 / 6) * (Math.PI / 180));
-		ctx.lineTo(0, tanksize + (tanksize / 2.5));
+		ctx.lineTo(0, tanksize + (tanksize / 2));
 		ctx.closePath();
 		ctx.clip();
 		ctx.translate(-tankpointx, -tankpointy);
