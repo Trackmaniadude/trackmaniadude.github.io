@@ -75,6 +75,7 @@ function drawMovement() {
 }
 
 function drawTank() {
+	ctx.lineJoin = "round";
 	var tankpointx = c.width / 2 - accel.x * 20;
 	var tankpointy = c.height / 2 - accel.y * 20;
 
