@@ -144,7 +144,7 @@ function drawTank() {
 
 			//Yellow Square
 			if (shapes[n].type === 0) {
-				drawNecro(shapes[n].x, shapes[n].y, shapes[n].size, shapes[n].angle, "#FFE869");
+				drawNecro(shapes[n].x, shapes[n].y, shapes[n].size+10, shapes[n].angle, "#FFE869");
 
 			//Orange Hexagon
 			} else if (shapes[n].type === 7) {
@@ -152,7 +152,7 @@ function drawTank() {
 
 			//Red Triangle
 			} else if (shapes[n].type === 1) {
-				drawDrone(shapes[n].x, shapes[n].y, shapes[n].size, shapes[n].angle, "#FC7677");
+				drawDrone(shapes[n].x, shapes[n].y, shapes[n].size+, shapes[n].angle, "#FC7677");
 
 			//Blue Pentagon
 			} else if (shapes[n].type === 2) {
