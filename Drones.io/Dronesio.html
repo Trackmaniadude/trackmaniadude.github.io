@@ -1,0 +1,56 @@
+<html>
+
+
+	<!DOCTYPE html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+		<link rel="shortcut icon" href="Images/favicon.png" type="image/x-icon" />
+		<title>Drones.io</title>
+		<meta charset="utf8"></meta>
+	</head>
+<body onload="handleOnLoad()">
+
+	<script src='Scripts/perlin.js'></script>
+
+	<!--Load images to be used ingame-->
+	<!--Drones-->
+	<img id="Blue" src="Images/Entities/Drone_Blue.png"></img>
+	<img id="Red" src="Images/Entities/Drone_Red.png"></img>
+	<img id="Green" src="Images/Entities/Drone_Green.png"></img>
+	<img id="Yellow" src="Images/Entities/Drone_Yellow.png"></img>
+	<!--Particles-->
+	<img id="Smoke1" src="Images/Particles/Smoke_1.png"></img>
+	<img id="Smoke2" src="Images/Particles/Smoke_2.png"></img>
+	<img id="Smoke3" src="Images/Particles/Smoke_3.png"></img>
+	<img id="Smoke4" src="Images/Particles/Smoke_4.png"></img>
+	<img id="Smoke5" src="Images/Particles/Smoke_5.png"></img>
+	<img id="Flash" src="Images/Particles/Flash.png"></img>
+	<!--Ammunition-->
+	<img id="Missile" src="Images/Entities/Missile.png"></img>
+	<!--End images-->
+
+
+
+	<canvas id="canvas" style="position:absolute; left:0px; top:0px;" onclick="handleClick()"></canvas>
+
+	<div id="BackDrop" style='position:fixed; left:0; top:0; width:100vw; height:100vh; background-color:#333333;'>
+	</div>
+
+	<div id="Start BG" style='position:fixed; left:0; top:0; width:100vw; height:100vh; background-color:#000000; opacity:0.5; visibility:hidden;'>
+	</div>
+
+	<div id="Start Screen" style='position:fixed; left:0; top:0; width:100vw; height:100vh;'>
+		<input type="text" id="nameInput" style='position:fixed; bottom:calc(50% + 2px); left:calc(50% - 175px); width:350px;' maxlength="15" onkeydown="if (event.keyCode == 13) document.getElementById('startButton').click()"></input>
+		<button id="startButton" style='position:fixed; top:calc(50% + 2px); left:calc(50% - 75px); width:150px;' onClick='startGame()'>Start</button>
+		<img id="logo" src="Images/Logo.png" style='position:fixed; left:calc(50% - 512px);'></img>
+		<button onClick=changeSkin() style='position:fixed; width:120px; height:45px; top:calc(50% - 110px); left:calc(50% - 60px);'>
+			<img id="Skin" src="Images/Entities/Drone_Blue.png" style='position:fixed; width:100px; height:25px; top:calc(50% - 100px); left:calc(50% - 50px); image-rendering:pixelated;'></img>
+		</button>
+	</div>
+	<input id="chatInput" style='position:fixed; bottom:10px; left:10px; width:500px; height:30px;' onkeydown="if (event.keyCode == 13) sendMSG()"></input>
+
+	<!--<script src='Scripts/app.js'></script>-->
+	<script src='Scripts/main.js'></script>
+	<script src='Scripts/renderer.js'></script>
+</body>
+</html>
