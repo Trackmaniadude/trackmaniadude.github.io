@@ -22,7 +22,10 @@ function renderStep(){
 		//Draw Players
 		renderPlayer(playerX,playerY,playerR,playerSkin,health,userName)
 
-		//Draw Cursor	
+		//Reset Scale For GUI
+		ctx.setTransform(1, 0, 0, 1, 0, 0)
+
+		//This normally would be unneeded, but other parts of the renderer for some reason require this.	
 		renderCursor()
 
 		//Show Position
@@ -37,14 +40,16 @@ function renderStep(){
 };
 
 function renderPlayer(X,Y,R,Skin,Health,Name){
-	ctx.translate(centerOffsetX+X-camX,centerOffsetY-Y+camY)
+	ctx.setTransform(azoom, 0, 0, azoom, 0, 0)
+	ctx.translate(centerOffsetX/azoom+X-camX,centerOffsetY/azoom-Y+camY)
 	ctx.rotate(rad(playerR))
 	ctx.drawImage(document.getElementById(Skin),-20,-10)
-	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.setTransform(azoom, 0, 0, azoom, 0, 0)
+	ctx.translate(centerOffsetX/azoom+X-camX,centerOffsetY/azoom-Y+camY)
+    
+	drawText(Name,25,0,"left",12,"#FFFFFF")	
 
-	drawText(Name,centerOffsetX+X-camX+25,centerOffsetY-Y+camY,"left",12,"#FFFFFF")	
-
-	bar(centerOffsetX+X-camX-20,tmpY = centerOffsetY-Y+camY-10,Health,100,"#33CC55")
+	bar(-20,-10,Health,100,"#33CC55")
 }
 
 function bar(x,y,val,mVal,color){
@@ -69,28 +74,12 @@ function bar(x,y,val,mVal,color){
 }
 
 function renderCursor(){
-
 	ctx.lineWidth = 2
 	ctx.strokeStyle = "#FFFFFF"
 
 	ctx.beginPath();
-	ctx.moveTo(mouseX,mouseY+3);
-	ctx.lineTo(mouseX,mouseY+9);
-	ctx.stroke();
-
-	ctx.beginPath();
-	ctx.moveTo(mouseX,mouseY-3);
-	ctx.lineTo(mouseX,mouseY-9);
-	ctx.stroke();
-
-	ctx.beginPath();
-	ctx.moveTo(mouseX+3,mouseY);
-	ctx.lineTo(mouseX+9,mouseY);
-	ctx.stroke();
-
-	ctx.beginPath();
-	ctx.moveTo(mouseX-3,mouseY);
-	ctx.lineTo(mouseX-9,mouseY);
+	ctx.moveTo(9999999,9999999);
+	ctx.lineTo(9999999,9999999);
 	ctx.stroke();
 }
 
@@ -121,10 +110,14 @@ function drawGrid(x,y,width,height,slotSize,lineColor) {
 	ctx.lineWidth = 0.1;
 	
 	for(var i = 0; i < width || i < height; i += slotSize) {
-		ctx.moveTo(0,i);
-		ctx.lineTo(width,i);
-		ctx.moveTo(i,0);
-		ctx.lineTo(i,height);
+		ctx.moveTo(-width,-i-slotSize)
+		ctx.lineTo(width,-i-slotSize)
+		ctx.moveTo(-i-slotSize,-height)
+		ctx.lineTo(-i-slotSize,height)
+		ctx.moveTo(-width,i)
+		ctx.lineTo(width,i)
+		ctx.moveTo(i,-height)
+		ctx.lineTo(i,height)
 	};
 	ctx.strokeStyle = lineColor;
 	ctx.stroke();
@@ -133,7 +126,8 @@ function drawGrid(x,y,width,height,slotSize,lineColor) {
 };
 
 function renderTerrain(){
-	ctx.translate(centerOffsetX-camX,centerOffsetY+camY)
+    ctx.scale(azoom,azoom)
+	ctx.translate(centerOffsetX/azoom-camX,centerOffsetY/azoom+camY)
 
 	ctx.beginPath()
 	ctx.moveTo(-1000,1000)
@@ -154,10 +148,10 @@ function renderMap(){
 	ctx.strokeStyle = "#000000"
 	ctx.fillStyle = "#FFFFFF"
 
-	ctx.rect(window.innerWidth-110,10,100,100)
-	ctx.fill()
+	ctx.setTransform(1,0,0,1,0,0)
+	ctx.fillRect(window.innerWidth-110,10,100,100)
 	ctx.globalAlpha = 1
-	ctx.stroke()
+	ctx.strokeRect(window.innerWidth-110,10,100,100)
 
 	//Render Map
 	ctx.translate(window.innerWidth-110,110)
@@ -193,13 +187,16 @@ function renderBG(){
 
 	renderTerrain()
 
-	drawGrid(50+centerOffsetX%25-(camX%25)-100,-25+((centerOffsetY+camY)%25),can.width+100,can.height+25,25,"#000000")
+    ctx.scale(azoom,azoom)
+
+	drawGrid(centerOffsetX/azoom-(camX%25),centerOffsetY/azoom+(camY%25),can.width/azoom,can.height/azoom,25,"#000000")
 }
 
 function renderProj(){
 	for(var i = 0;i < projectiles.length; i++){
 
-		var tmpX = centerOffsetX-projectiles[i].x-camX, tmpY = centerOffsetY-projectiles[i].y+camY
+		ctx.setTransform(azoom,0,0,azoom,0,0)
+		var tmpX = centerOffsetX/azoom-projectiles[i].x-camX, tmpY = centerOffsetY/azoom-projectiles[i].y+camY
 
 		if (projectiles[i].type=="Rapid"){
 		ctx.lineWidth = 2
@@ -230,11 +227,11 @@ function renderProj(){
 function renderParticles(){
 	for(var i = 0;i < particles.length; i++){
 
-		var tmpX = centerOffsetX-particles[i].x-camX, tmpY = centerOffsetY-particles[i].y+camY
+		var tmpX = centerOffsetX/azoom-particles[i].x-camX, tmpY = centerOffsetY/azoom-particles[i].y+camY
 
+		ctx.setTransform(azoom,0,0,azoom,0,0)
 		ctx.translate(tmpX,tmpY)
 		ctx.rotate(rad(particles[i].rot))
-
 		if (particles[i].type=="Smoke"){
 			ctx.globalAlpha = particles[i].time/50
 			if (particles[i].time<51 && particles[i].time>40){

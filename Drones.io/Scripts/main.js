@@ -9,7 +9,6 @@ var weapon = "Rapid"
 var reload = 0
 var skin = 0
 var playerSkin = "Blue"
-var camShake = 0
 
 var inGame = false
 
@@ -17,6 +16,17 @@ var projectiles = []
 var particles = []
 
 var chat = []
+
+var seed = Math.random()*1000
+var terrain = []
+for (var i=0; i<1; i+=0.005){
+	terrain.push(Math.round(perlin.Noise(i*10,0.5,seed)*100)/100)
+}
+
+var playerX = 4500+(Math.random()*1000), playerY = terrain[Math.round(playerX/50)]*2500, playerR = 0
+var camX = playerX, camY = playerY, camShake = 0, zoom = 1, azoom = zoom
+
+setInterval(runStartScreen,20)
 
 function clip(val,mn,mx){
 	if(val<mn){return mn}else if(val>mx){return mx}else{return val}
@@ -30,18 +40,9 @@ function randInt(mn,mx){
 	return Math.round(((Math.random()-0.5)*(mx-mn)) + ((mx+mn)/2))
 }
 
-var seed = Math.random()*1000
-var terrain = []
-for (var i=0; i<1; i+=0.005){
-	terrain.push(Math.round(perlin.Noise(i*10,0.5,seed)*100)/100)
-}
-
-var playerX = 4500+(Math.random()*1000), playerY = terrain[Math.round(playerX/50)]*2500, playerR = 0
-var camX = playerX, camY = playerY
-
-setInterval(runStartScreen,20)
-
 function startGame(){
+    document.getElementById("rdt").style.visibility = "hidden"
+    document.getElementById("ChangeLog").style.visibility = "hidden"
 	xV=0
 	yV=0
 	playerX = 4500+(Math.random()*1000)
@@ -70,6 +71,8 @@ function startGame(){
 }
 
 function endGame(){
+    document.getElementById("ChangeLog").style.visibility = "visible"
+    document.getElementById("rdt").style.visibility = "visible"
 	health = 0
 	isPlaying = true
 	document.getElementById("Start BG").style.visibility = "visible"
@@ -104,6 +107,7 @@ function step(){
 	tick++
 	tick = tick%65536
 	if (isLoaded){
+		zoom = (window.innerHeight/window.outerHeight)
 		var tmpCX = camX, tmpCY = camY
 		camX += rand(-1*camShake,camShake)
 		camY += rand(-1*camShake,camShake)
@@ -119,6 +123,7 @@ function step(){
 			}
 			//Run scripts for when playing.
 			//Movement
+			azoom = ((azoom-zoom)/1.2)+zoom
 			camX = ((camX-playerX)/1.2)+playerX
 			camY = ((camY-playerY)/1.2)+playerY
 			playerX+=xV
@@ -269,8 +274,6 @@ var isLoaded = false;
 function handleOnLoad(){
 	isLoaded = true;
 	var blueDrone = document.getElementById("Blue");
-	document.getElementById("canvas").style.cursor = 'none';
-
 	document.getElementById("nameInput").focus()
 };
 

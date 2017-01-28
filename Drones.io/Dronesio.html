@@ -31,7 +31,7 @@
 
 
 
-	<canvas id="canvas" style="position:absolute; left:0px; top:0px;" onclick="handleClick()"></canvas>
+	<canvas id="canvas" style="position:absolute; left:0px; top:0px; cursor:crosshair;" onclick="handleClick()"></canvas>
 
 	<div id="BackDrop" style='position:fixed; left:0; top:0; width:100vw; height:100vh; background-color:#333333;'>
 	</div>
@@ -39,15 +39,33 @@
 	<div id="Start BG" style='position:fixed; left:0; top:0; width:100vw; height:100vh; background-color:#000000; opacity:0.5; visibility:hidden;'>
 	</div>
 
+	<div id="ChangeLog">
+		<p><str>Changelog</str></p>
+		<div id="CL">
+			<div class="CLEntry">
+				<str>1-28-17</str>
+				<p> - Added link to r/Dronesio.</p>
+				<p> - Added zoom.</p>
+				<p> - Game now compensates for when you zoom in/out to keep things fair.</p>
+				<p> - Added changelog</p>
+			</div>
+		</div>
+	</div>
+
 	<div id="Start Screen" style='position:fixed; left:0; top:0; width:100vw; height:100vh;'>
-		<input type="text" id="nameInput" style='position:fixed; bottom:calc(50% + 2px); left:calc(50% - 175px); width:350px;' maxlength="15" onkeydown="if (event.keyCode == 13) document.getElementById('startButton').click()"></input>
+		<input type="text" id="nameInput" style='outline:none; position:fixed; bottom:calc(50% + 2px); left:calc(50% - 175px); width:350px;' maxlength="15" onkeydown="if (event.keyCode == 13) document.getElementById('startButton').click()"></input>
 		<button id="startButton" style='position:fixed; top:calc(50% + 2px); left:calc(50% - 75px); width:150px;' onClick='startGame()'>Start</button>
 		<img id="logo" src="Images/Logo.png" style='position:fixed; left:calc(50% - 512px);'></img>
 		<button onClick=changeSkin() style='position:fixed; width:120px; height:45px; top:calc(50% - 110px); left:calc(50% - 60px);'>
 			<img id="Skin" src="Images/Entities/Drone_Blue.png" style='position:fixed; width:100px; height:25px; top:calc(50% - 100px); left:calc(50% - 50px); image-rendering:pixelated;'></img>
 		</button>
 	</div>
-	<input id="chatInput" style='position:fixed; bottom:10px; left:10px; width:500px; height:30px;' onkeydown="if (event.keyCode == 13) sendMSG()"></input>
+	<input id="chatInput" style='position:fixed; bottom:10px; left:10px; width:500px; height:30px; visibility:hidden;' onkeydown="if (event.keyCode == 13) sendMSG()"></input>
+
+	<a id="rdt" href="https://reddit.com/r/dronesio">
+		<img src="Images/rdt.png" style='position:absolute; bottom:10px; left:10px;'></img>
+	</a>
+    
 
 	<!--<script src='Scripts/app.js'></script>-->
 	<script src='Scripts/main.js'></script>

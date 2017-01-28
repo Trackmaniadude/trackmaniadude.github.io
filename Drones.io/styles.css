@@ -192,6 +192,18 @@ kbd {
 	padding: 0.0em 0.5em;
 }
 
+str {
+	background-color: #999999;
+	border-radius: 10px;
+	font-weight: bold;
+	margin: 0em 0.13em;
+	padding: 0.0em 0.5em;
+}
+
+p {
+	font-weight:normal;
+}
+
 #chatInput {
 	opacity: 0.5;
 	background-color: #000000;
@@ -208,4 +220,38 @@ kbd {
 	-moz-user-select: text;
 	-webkit-user-select: text;
 	-ms-user-select: text;
+}
+
+#ChangeLog {
+z-index: 10;
+	overflow: hidden;
+	position: absolute;
+	top: 10px; left:calc(50% - 100px);
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	background-color: #999999;
+	border: 2px solid #555555;
+	border-radius: 10px;
+	transition-duration: 0.5s;
+}
+
+#ChangeLog:hover {
+	width: 600px;
+	height: calc(100% - 40px);
+	left: calc(50% - 300px)
+}
+
+#CL {
+	padding:5px;
+	width: 600px;
+	text-align: left;
+}
+
+.CLEntry {
+	width:580px;
+	padding:5px;
+	background-color: #777777;
+	border: none;
+	border-radius: 10px;
 }
