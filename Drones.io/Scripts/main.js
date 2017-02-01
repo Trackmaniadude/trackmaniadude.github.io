@@ -136,7 +136,13 @@ function step(){
 			if (playerX<0){playerX=0}
 			if (playerX>9999){playerX=9999}
 			if (playerY<terrain[Math.floor(playerX/50)]*2500){
-				if(yV<-25){health+=(yV+25)*4;camShake=15}
+				if(yV<-25){
+					health+=(yV+25)*4
+					camShake=15
+					for (var j=0;j<25;j++){
+						makeParticle(playerX,playerY,55,(Math.random()*6)-3,(Math.random()*6)-3,"Smoke",Math.random()*360,1)
+					}
+				}
 				playerY=terrain[Math.floor(playerX/50)]*2500
 				yV/=-5
 				xV/=2
