@@ -22,7 +22,7 @@ function renderStep(){
 		renderParticles()
 
 		//Draw Players
-		if (health<1) {renderPlayer(playerX,playerY,playerR,playerSkin,health,userName)}
+		if (health>0) {renderPlayer(playerX,playerY,playerR,playerSkin,health,userName)}
 		
 		//Finish Rendering Game
 
