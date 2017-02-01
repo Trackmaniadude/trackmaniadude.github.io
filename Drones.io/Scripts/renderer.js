@@ -44,7 +44,7 @@ function renderStep(){
 		renderChat()
 		
 		//Show Weapon
-		drawText(weapon,10,window.innerHeight-10,"right",24,"#00AAFF")
+		drawText(weapon,10,window.innerHeight-10,"right",24,"#FFFFFF")
 		
 		//Finish GUI
 	}
