@@ -22,7 +22,7 @@ function renderStep(){
 		renderParticles()
 
 		//Draw Players
-		renderPlayer(playerX,playerY,playerR,playerSkin,health,userName)
+		if (dead==false) {renderPlayer(playerX,playerY,playerR,playerSkin,health,userName)}
 		
 		//Finish Rendering Game
 
