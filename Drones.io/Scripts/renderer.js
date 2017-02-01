@@ -9,6 +9,8 @@ function renderStep(){
 		document.getElementById('canvas').height = window.innerHeight;
 		centerOffsetX = can.width/2
 		centerOffsetY = can.height/2
+		
+		//Render Game
 
 		//Draw Background
 		renderBG()
@@ -21,9 +23,13 @@ function renderStep(){
 
 		//Draw Players
 		renderPlayer(playerX,playerY,playerR,playerSkin,health,userName)
+		
+		//Finish Rendering Game
 
 		//Reset Scale For GUI
 		ctx.setTransform(1, 0, 0, 1, 0, 0)
+		
+		//Start Rendering GUI
 
 		//This normally would be unneeded, but other parts of the renderer for some reason require this.	
 		renderCursor()
@@ -36,6 +42,11 @@ function renderStep(){
 
 		//Render Chat
 		renderChat()
+		
+		//Show Weapon
+		drawText(weapon,10,window.innerHeight-10,"right",24,"#00AAFF")
+		
+		//Finish GUI
 	}
 };
 
