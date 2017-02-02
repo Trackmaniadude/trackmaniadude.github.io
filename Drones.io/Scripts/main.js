@@ -172,7 +172,7 @@ function controls(){
 
 	//Game Keyboard Controls
 	if ((keysPressed[87] || keysPressed[38]) && yV<10){
-		yV++
+		yV+=2
 	}
 	if (keysPressed[68] || keysPressed[39]){			
 		xV+=0.8
