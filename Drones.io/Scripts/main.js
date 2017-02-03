@@ -9,6 +9,7 @@ var weapon = "Rapid"
 var reload = 0
 var skin = 0
 var playerSkin = "Blue"
+var onGround = false
 
 var inGame = false
 
@@ -136,6 +137,7 @@ function step(){
 			if (playerX<0){playerX=0}
 			if (playerX>9999){playerX=9999}
 			if (playerY<terrain[Math.floor(playerX/50)]*2500){
+				onGround = true
 				if(yV<-25){
 					health+=(yV+25)*4
 					camShake=15
@@ -146,6 +148,8 @@ function step(){
 				playerY=terrain[Math.floor(playerX/50)]*2500
 				yV/=-5
 				xV/=2
+			} else {
+				onGround = false
 			}
 			if (playerY>4000){playerY=4000;yV=0}
 			//End game when dead.
@@ -173,6 +177,10 @@ function controls(){
 	//Game Keyboard Controls
 	if ((keysPressed[87] || keysPressed[38]) && yV<10){
 		yV+=1.2
+		if onGround {
+			playerY += 2
+			yV = 1
+		}
 	}
 	if (keysPressed[68] || keysPressed[39]){			
 		xV+=0.8
