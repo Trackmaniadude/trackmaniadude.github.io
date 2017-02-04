@@ -24,10 +24,8 @@ for (var i=0; i<1; i+=0.005){
 	terrain.push(Math.round(perlin.Noise(i*10,0.5,seed)*100)/100)
 }
 
-var playerX = 4500+(Math.random()*1000), playerY = terrain[Math.round(playerX/50)]*2500, playerR = 0
+var playerX = Math.random()*10000, playerY = terrain[Math.round(playerX/50)]*2500, playerR = 0
 var camX = playerX, camY = playerY, camShake = 0, zoom = 1, azoom = zoom
-
-setInterval(runStartScreen,20)
 
 function clip(val,mn,mx){
 	if(val<mn){return mn}else if(val>mx){return mx}else{return val}
@@ -79,12 +77,6 @@ function endGame(){
 	isPlaying = true
 	document.getElementById("Start BG").style.visibility = "visible"
 	document.getElementById("Start Screen").style.visibility = "visible"
-}
-
-function runStartScreen(){
-	tick++
-	tick = tick%65536
-	document.getElementById("logo").style.top = "calc(50% - " + ((Math.sin(rad(tick))*25)+350) + "px)"
 }
 
 function changeSkin(){
