@@ -177,7 +177,7 @@ function controls(){
 	//Game Keyboard Controls
 	if ((keysPressed[87] || keysPressed[38]) && yV<10){
 		yV+=1.2
-		if onGround {
+		if (onGround) {
 			playerY += 2
 			yV = 1
 		}
