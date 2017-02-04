@@ -62,6 +62,7 @@ function startGame(){
 	document.getElementById("Start BG").style.visibility = "hidden"
 	document.getElementById("Start Screen").style.visibility = "hidden"
 	userName = document.getElementById("nameInput").value
+	setCookie("name", userName, 365)
 	if (userName==undefined || userName==""){
 		//Default nickname if none given.
 		userName = "An Unnamed Drone"
@@ -289,6 +290,7 @@ function handleOnLoad(){
 	isLoaded = true;
 	var blueDrone = document.getElementById("Blue");
 	document.getElementById("nameInput").focus()
+	document.getElementById("nameInput").Value = getCookie("name")
 };
 
 function handleClick(evt){
@@ -340,4 +342,27 @@ document.onmouseup = handleMouseUp;
 	
 function rad(deg){
 	return deg * Math.PI / 180
+}
+
+//Found some cookie functions on W3Schools
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
