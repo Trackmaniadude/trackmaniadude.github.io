@@ -237,6 +237,17 @@ z-index: 10;
 }
 
 #ChangeLog:hover {
+	animation-name: ssss;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes ssss {
+    0%   {background-color:#999999;}
+    50%   {background-color:#CCCCCC;}
+    100%   {background-color:#999999;}
+}
+
+#ChangeLog:active {
 	overflow: scroll;
 	width: 600px;
 	height: calc(100% - 40px);
