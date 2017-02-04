@@ -237,6 +237,7 @@ z-index: 10;
 }
 
 #ChangeLog:hover {
+	overflow: scroll;
 	width: 600px;
 	height: calc(100% - 40px);
 	left: calc(50% - 300px)
@@ -249,7 +250,7 @@ z-index: 10;
 }
 
 .CLEntry {
-	width:580px;
+	width:570px;
 	padding:5px;
 	background-color: #777777;
 	border: none;
