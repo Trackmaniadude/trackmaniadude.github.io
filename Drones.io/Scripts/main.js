@@ -142,8 +142,11 @@ function step(){
 				if(yV<-25){
 					health+=(yV+25)*4
 					camShake=15
-					for (var j=0;j<25;j++){
-						makeParticle(playerX,playerY,55,(Math.random()*6)-3,(Math.random()*6)-3,"Smoke",Math.random()*360,1)
+					if (health<1) {
+						send(userName + " crashed into the ground.","#00AAFF")
+						for (var j=0;j<25;j++){
+							makeParticle(playerX,playerY,55,(Math.random()*6)-3,(Math.random()*6)-3,"Smoke",Math.random()*360,1)
+						}
 					}
 				}
 				playerY=terrain[Math.floor(playerX/50)]*2500
