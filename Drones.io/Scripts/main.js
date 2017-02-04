@@ -61,6 +61,7 @@ function startGame(){
 	document.getElementById("Start Screen").style.visibility = "hidden"
 	userName = document.getElementById("nameInput").value
 	setCookie("name", userName, 365)
+	setCookie("skin", skin-1, 365)
 	if (userName==undefined || userName==""){
 		//Default nickname if none given.
 		userName = "An Unnamed Drone"
@@ -286,6 +287,8 @@ function handleOnLoad(){
 	var blueDrone = document.getElementById("Blue");
 	document.getElementById("nameInput").focus()
 	document.getElementById("nameInput").value = getCookie("name")
+	skin = getCookie("skin")
+	changeSkin()
 };
 
 function handleClick(evt){
