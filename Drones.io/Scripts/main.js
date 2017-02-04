@@ -290,7 +290,7 @@ function handleOnLoad(){
 	isLoaded = true;
 	var blueDrone = document.getElementById("Blue");
 	document.getElementById("nameInput").focus()
-	document.getElementById("nameInput").Value = getCookie("name")
+	document.getElementById("nameInput").value = getCookie("name")
 };
 
 function handleClick(evt){
