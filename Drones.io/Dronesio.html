@@ -42,6 +42,10 @@
 		<p><str>Changelog</str></p>
 		<div id="CL">
 			<div class="CLEntry">
+				<str>2-5-17</str>
+				<p> - Added a basic death screen.</p>
+			</div>
+			<div class="CLEntry">
 				<str>2-4-17</str>
 				<p> - Decreased how much the logo moves.</p>
 				<p> - Game should remember the skin you last played with now.</p>
@@ -81,6 +85,15 @@
 			<img id="Skin" src="Images/Entities/Drone_Blue.png" style='position:fixed; width:100px; height:25px; top:calc(50% - 100px); left:calc(50% - 50px); image-rendering:pixelated;'></img>
 		</button>
 	</div>
+	
+	<div id="Death Screen" style='position:fixed; left:0; top:0; width:100vw; height:100vh; visibility: hidden;'>
+		<p style='position:fixed; top:calc(50% - 100px); width:100%; text-align:center;' id="Death Message"></p>
+		<p style='position:fixed; top:calc(50% - 80px); width:100%; text-align:center;' id="Time Alive"></p>
+		<p style='position:fixed; top:calc(50% - 60px); width:100%; text-align:center;' id="Score">Score: N/A</p>
+		<p style='position:fixed; top:calc(50% - 40px); width:100%; text-align:center;' id="Kills">Kills: 0</p>
+		<button style='position:fixed; top:calc(50% + 2px); left:calc(50% - 75px); width:150px;' onClick='endDeathScreen()'>Next</button>
+	</div>
+	
 	<input id="chatInput" style='position:fixed; bottom:10px; left:10px; width:500px; height:30px; visibility:hidden;' onkeydown="if (event.keyCode == 13) sendMSG()"></input>
 
 	<a id="rdt" href="https://reddit.com/r/dronesio">

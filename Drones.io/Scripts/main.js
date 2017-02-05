@@ -40,6 +40,7 @@ function randInt(mn,mx){
 }
 
 function startGame(){
+	timer.start("timeAlive")
     document.getElementById("rdt").style.visibility = "hidden"
     document.getElementById("ChangeLog").style.visibility = "hidden"
 	xV=0
@@ -71,13 +72,23 @@ function startGame(){
 	send(userName + " has joined the game!","#FFFF00")
 }
 
+function setDM(msg) {
+	document.getElementById("Death Message").innerHTML = msg
+}
+
 function endGame(){
+	document.getElementById("Time Alive").innerHTML = "Time Alive: " + Math.round(timer.stop("timeAlive")/100)/10 + " seconds."
     document.getElementById("ChangeLog").style.visibility = "visible"
     document.getElementById("rdt").style.visibility = "visible"
 	health = 0
 	isPlaying = true
 	document.getElementById("Start BG").style.visibility = "visible"
+	document.getElementById("Death Screen").style.visibility = "visible"
+}
+
+function endDeathScreen(){
 	document.getElementById("Start Screen").style.visibility = "visible"
+	document.getElementById("Death Screen").style.visibility = "hidden"
 }
 
 function changeSkin(){
@@ -137,6 +148,14 @@ function step(){
 					camShake=15
 					if (health<1) {
 						send(userName + " crashed into the ground.","#00AAFF")
+						num = Math.round(Math.random()*2)
+						if (num == 0) {
+							setDM("Did you forget how to fly?")
+						} else if (num==1) {
+							setDM("CRASH")
+						} else {
+							setDM("Oops. You might need to press the up key next time.")
+						}
 						for (var j=0;j<25;j++){
 							makeParticle(playerX,playerY,55,(Math.random()*6)-3,(Math.random()*6)-3,"Smoke",Math.random()*360,1)
 						}
@@ -185,6 +204,18 @@ function controls(){
 	if (keysPressed[65] || keysPressed[37]){
 		xV-=0.8
 		playerR = ((playerR+15)/1.5)-15
+	}
+	if (keysPressed[79]){
+		health = 0
+		send(userName + " committed suicide.","#00AAFF")
+		num = Math.round(Math.random()*2)
+		if (num == 0) {
+			setDM("You committed suicide. Why?")
+		} else if (num==1) {
+			setDM("You set your drone's parent property to null...")
+		} else {
+			setDM("Ded.")
+		}
 	}
 	xV = xV/1.1
 	playerR = playerR/1.1
@@ -364,3 +395,21 @@ function getCookie(cname) {
     }
     return "";
 }
+
+//Found a timer on StackOverflow
+var timer = (function () {
+  var startTimes = {}; // multiple start times will be stored here
+
+  return {
+    start: function (id) {
+      id = id || 'default'; // set id = 'default' if no valid argument passed
+      startTimes[id] = +new Date; // store the current time using the timer id
+    },
+    stop: function (id) {
+      id = id || 'default';
+      var diff = (+new Date - startTimes[id]); // get the difference
+      delete startTimes[id]; // remove the stored start time
+      return diff || undefined; // return the difference in milliseconds
+    }
+  };
+}());
