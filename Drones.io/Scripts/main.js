@@ -157,7 +157,7 @@ function step(){
 							setDM("Oops. You might need to press the up key next time.")
 						}
 						for (var j=0;j<25;j++){
-							makeParticle(playerX,playerY,55,(Math.random()*6)-3,(Math.random()*6)-3,"Smoke",Math.random()*360,1)
+							makeParticle(-playerX,playerY,55,(Math.random()*6)-3,(Math.random()*6)-3,"Smoke",Math.random()*360,1)
 						}
 					}
 				}
