@@ -46,6 +46,9 @@ function renderStep(){
 		//Show Weapon
 		drawText(weapon,window.innerWidth-10,window.innerHeight-10,"right",24,"#FFFFFF")
 		
+		//Show Special If Any
+		if (Pclass=="Speeder"){drawSpeeder()}
+		
 		//Finish GUI
 	}
 };
@@ -60,28 +63,29 @@ function renderPlayer(X,Y,R,Skin,Health,Name){
     
 	drawText(Name,25,0,"left",12,"#FFFFFF")	
 
-	bar(-20,-10,Health,100,"#33CC55")
+	bar(-20,-10,Health,100,"#33CC55",false,36)
 }
 
-function bar(x,y,val,mVal,color){
-
+function bar(x,y,val,mVal,color,overrideStyle,len){
+	
+	if (overrideStyle==false){
 		ctx.lineWidth = 6
 		ctx.strokeStyle = "#000000"
-
+	}
+	
+	ctx.beginPath();
+	ctx.moveTo(x+2,y-10);
+	ctx.lineTo(x+len+2,y-10);
+	ctx.stroke();
+	
+	if (val>0){
+		ctx.lineWidth = ctx.lineWidth-2
+		ctx.strokeStyle = color
 		ctx.beginPath();
-		ctx.moveTo(x+2,y-10);
-		ctx.lineTo(x+38,y-10);
-		ctx.stroke();
-		
-		if (val>0){
-			ctx.lineWidth = 4
-			ctx.strokeStyle = color
-
-			ctx.beginPath();
-			ctx.moveTo(x+3,y-10);
-			ctx.lineTo(x+3+((val/mVal)*34),y-10);
-			ctx.stroke();	
-		}
+		ctx.moveTo(x+3,y-10);
+		ctx.lineTo(x+3+((val/mVal)*(len-2)),y-10);
+		ctx.stroke();	
+	}
 }
 
 function renderCursor(){
@@ -284,6 +288,21 @@ function renderChat(){
 			chat.splice(i,1)
 		}
 	}
+	ctx.globalAlpha = 1
+}
+
+function drawSpeeder() {
+	ctx.globalAlpha = 0.75
+	ctx.lineWidth = 24
+	ctx.strokeStyle = "#000000"
+	if (reload2[0]>0){
+		bar(5,window.innerHeight-30,200-reload2[0],200,"#00AAFF",true,90)
+	} else {
+		bar(5,window.innerHeight-30,reload2[1],3,"#00AAFF",true,90)
+	}
+	ctx.globalAlpha = 0.5
+	drawText("LShift",52.5,window.innerHeight-34,"center",16,"#FFFFFF")
+	ctx.globalAlpha = 1
 }
 
 setInterval(renderStep,20);

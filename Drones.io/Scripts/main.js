@@ -6,10 +6,12 @@ var userName = "An Unnamed Drone"
 var health = 100
 var isPlaying = false
 var weapon = "Rapid"
-var reload = 0
+var reload = 0, reload2 = [0,3]
 var skin = 0
 var playerSkin = "Blue"
 var onGround = false
+var Pclass = "General"
+var autoFire = false
 
 var inGame = false
 
@@ -48,10 +50,13 @@ function startGame(){
 	playerX = 4500+(Math.random()*1000)
 	playerY = terrain[Math.round(playerX/50)]*2500
 	tick = 0
-	var reload = 0
+	reload = 0
+	reload2 = [0,3]
 	weapon = "Rapid"
 	isPlaying = false
 	health = 100
+	autoFire = false
+	Pclass = document.getElementById("classInput").value
 	//Only start game loop if first time.
 	if (inGame==false){
 		setInterval(step,20);
@@ -63,6 +68,7 @@ function startGame(){
 	userName = document.getElementById("nameInput").value
 	setCookie("name", userName, 365)
 	setCookie("skin", skin-1, 365)
+	setCookie("class", Pclass, 365)
 	if (userName==undefined || userName==""){
 		//Default nickname if none given.
 		userName = "An Unnamed Drone"
@@ -124,9 +130,8 @@ function step(){
 		handleProjectiles()
 		handleParticles()
 		if (isPlaying==false){
-			if (reload>0){
-				reload--
-			}
+			if (reload>0){reload--}
+			if (reload2[0]>0){reload2[0]--}
 			//Run scripts for when playing.
 			//Movement
 			azoom = ((azoom-zoom)/1.2)+zoom
@@ -217,11 +222,27 @@ function controls(){
 			setDM("Ded.")
 		}
 	}
+	if (reload2[2] && keysPressed[16] && reload2[0]==0 && Pclass=="Speeder"){
+		reload2[2] = false
+		reload2[1]--
+		if (reload2[1]==0) {
+			reload2[1]=3
+			reload2[0] = 200
+		}
+		var moveDir = rad(pointTo(mouseX,mouseY,centerOffsetX+playerX-camX,centerOffsetY-playerY+camY))
+		playerX+=Math.cos(moveDir)*-50
+		playerY+=Math.sin(moveDir)*50
+		xV = Math.cos(moveDir)*-50
+		yV = Math.sin(moveDir)*20
+	}
+	if (keysPressed[16]==false) {
+		reload2[2] = true
+	}
 	xV = xV/1.1
 	playerR = playerR/1.1
 
 	//Mouse Controls
-	if (weapon=="Rapid" && mouseDown && reload==0){
+	if (weapon=="Rapid" && (mouseDown || autoFire) && reload==0){
 		var audio = new Audio('Sounds/Shoot.wav');
 		audio.play();
 			
@@ -230,7 +251,7 @@ function controls(){
 
 		reload = 3
 		}
-	if (weapon=="Missile" && mouseDown && reload==0){
+	if (weapon=="Missile" && (mouseDown || autoFire) && reload==0){
 		var audio = new Audio('Sounds/Missile.mp3');
 		audio.play();
 			
@@ -242,7 +263,7 @@ function controls(){
 }
 
 function swapWeapon(){
-	if (weapon=="Rapid"){
+	if (weapon=="Rapid" && Pclass=="General"){
 		weapon = "Missile"
 	} else {
 		weapon = "Rapid"
@@ -319,6 +340,9 @@ function handleOnLoad(){
 	document.getElementById("nameInput").focus()
 	document.getElementById("nameInput").value = getCookie("name")
 	skin = getCookie("skin")
+	if (getCookie("class")!=""){
+		document.getElementById("classInput").value = getCookie("class")
+	}
 	changeSkin()
 };
 
@@ -340,12 +364,21 @@ function send(msg,color){
 
 function handleKeyDown(evt){
 	keysPressed[evt.keyCode] = true;
-	if (evt.keyCode==69 || evt.keyCode==16){
+	if (evt.keyCode==81){
 		swapWeapon()
 	}
 	if (evt.keyCode==13){
 		document.getElementById("chatInput").style.visibility = "visible"
 		document.getElementById("chatInput").focus();
+	}
+	if (evt.keyCode==69){
+		if (autoFire) {
+			autoFire = false
+			send("Auto Fire disabled","#FFDD00")
+		} else {
+			autoFire = true
+			send("Auto Fire enabled","#00FF00")
+		}
 	}
 };	
 function handleKeyUp(evt){
