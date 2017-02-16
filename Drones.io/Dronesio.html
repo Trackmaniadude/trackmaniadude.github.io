@@ -42,6 +42,13 @@
 		<p><str>Changelog</str></p>
 		<div id="CL">
 			<div class="CLEntry">
+				<str>2-16-17</str>
+				<p> - Added mobile controls.</p>
+				<p> - Just select one from the "Controls" dropdown.</p>
+				<p> - Newest update shows on main page.</p>
+				<p> - Highlights green if the update was recent.</p>
+			</div>
+			<div class="CLEntry">
 				<str>2-12-17</str>
 				<p> - New crosshair image.</p>
 			</div>
@@ -95,6 +102,13 @@
 	</div>
 
 	<div id="Start Screen" style='position:fixed; left:0; top:0; width:100vw; height:100vh;'>
+		<div id="newUpdate" style='position:fixed; left:10px; top:10px; z-index:1337;'>
+				<str> Last updated 1-33-7. </str>
+				<p> - Sample Text.</p>
+				<p> - More Sample Text.</p>
+				<p> - Hello!</p>
+				<p> - Uhh, why are you still here?</p>
+			</div>
 		<input type="text" id="nameInput" style='outline:none; position:fixed; bottom:calc(50% + 2px); left:calc(50% - 175px); width:350px;' maxlength="15" onkeydown="if (event.keyCode == 13) document.getElementById('startButton').click()"></input>
 		<button id="startButton" style='position:fixed; top:calc(50% + 2px); left:calc(50% - 75px); width:150px;' onClick='startGame()'>Start</button>
 		<img id="logo" src="Images/Logo.png" style='position:fixed; left:calc(50% - 512px);'></img>
@@ -108,6 +122,12 @@
 			<optgroup label="Classes">
 				<option value="General">Normal</option>
 				<option value="Speeder">Speeder</option>
+			</optgroup>
+		</select>
+		<select id="controlStyle" style='position:fixed; top:calc(50% + 100px); left:calc(50% - 50px); width:100px;'>
+			<optgroup label="Control Styles">
+				<option value="normal">Desktop</option>
+				<option value="tilt">Mobile</option>
 			</optgroup>
 		</select>
 	</div>

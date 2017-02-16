@@ -13,12 +13,18 @@ var onGround = false
 var Pclass = "General"
 var autoFire = false
 
+//Used with mobile controls.
+var throttle = 0
+var throttleLimit = [50,window.innerHeight-50]
+
 var inGame = false
 
 var projectiles = []
 var particles = []
 
 var chat = []
+
+var devRot = [0,0,0]
 
 var seed = Math.random()*1000
 var terrain = []
@@ -188,6 +194,18 @@ function pointTo(x1,y1,x2,y2){
 }
 
 function controls(){
+	//Tilt Controls
+	if (document.getElementById("controlStyle").value == "tilt") {
+		var target = clip(devRot[1]/10,-1,1)
+		xV+=target,-0.8,0.8
+		throttle = clip((devRot[2]+45)/10,0,1)
+		yV+=throttle*1.2
+		if (onGround && throttle > 0.01) {
+			playerY += 2
+			yV = 1
+		}
+		playerR = ((target*5)/1.5)+target*5
+	}
 	//Show chat if active
 	if (document.activeElement.id=="chatInput"){
 		document.getElementById("chatInput").style.opacity = 0.5
@@ -196,7 +214,7 @@ function controls(){
 	}
 
 	//Game Keyboard Controls
-	if ((keysPressed[87] || keysPressed[38]) && yV<10){
+	if (keysPressed[87] || keysPressed[38]){
 		yV+=1.2
 		if (onGround) {
 			playerY += 2
@@ -205,7 +223,8 @@ function controls(){
 	}
 	if (keysPressed[68] || keysPressed[39]){			
 		xV+=0.8
-		playerR = ((playerR-15)/1.5)+15		}
+		playerR = ((playerR-15)/1.5)+15		
+	}
 	if (keysPressed[65] || keysPressed[37]){
 		xV-=0.8
 		playerR = ((playerR+15)/1.5)-15
@@ -250,7 +269,7 @@ function controls(){
 		projectiles.push({x:-playerX,y:playerY,dir:shootDir,time:100,xv:Math.cos(rad(shootDir))*10-xV,yv:yV+Math.sin(rad(shootDir))*10,type:"Rapid"})
 
 		reload = 3
-		}
+	}
 	if (weapon=="Missile" && (mouseDown || autoFire) && reload==0){
 		var audio = new Audio('Sounds/Missile.mp3');
 		audio.play();
@@ -259,7 +278,10 @@ function controls(){
 		projectiles.push({x:-playerX,y:playerY,dir:shootDir,time:200,xv:-xV,yv:-5+yV,type:"Missile"})
 
 		reload = 100
-		}
+	}
+	
+	//Clip Y Velocity
+	yV = clip(yV,-1000,10)
 }
 
 function swapWeapon(){
@@ -335,6 +357,13 @@ var evt = window.event;
 var isLoaded = false;
 
 function handleOnLoad(){
+	var last = new Date(document.lastModified)
+	var now = new Date()
+		
+	if (last.getDate() == now.getDate() && last.getMonth() == now.getMonth() && last.getFullYear() == now.getFullYear()) {
+		document.getElementById("newUpdate").style.color = "#33FF33"
+	}
+		
 	isLoaded = true;
 	var blueDrone = document.getElementById("Blue");
 	document.getElementById("nameInput").focus()
@@ -344,6 +373,8 @@ function handleOnLoad(){
 		document.getElementById("classInput").value = getCookie("class")
 	}
 	changeSkin()
+	document.getElementById("newUpdate").innerHTML = document.getElementsByClassName("CLEntry")[0].innerHTML
+	document.getElementsByClassName("CLEntry")[0].style.boxShadow = "0 0px 8px 0 #000"
 };
 
 function handleClick(evt){
@@ -446,3 +477,18 @@ var timer = (function () {
     }
   };
 }());
+
+if(window.DeviceOrientationEvent){
+	window.addEventListener("deviceorientation", orientation, false);
+}else{
+	console.log("DeviceOrientationEvent is not supported");
+}
+
+function orientation(event){
+	devRot = [event.alpha,event.beta,event.gamma]
+	console.log("Magnetometer: "
+		+ event.alpha + ", "
+		+ event.beta + ", "
+		+ event.gamma
+	);
+}
