@@ -345,7 +345,7 @@ function handleProjectiles(){
 		}
 		if (projectiles[i].type=="AC" && dist(-playerX,playerY,projectiles[i].x-32,projectiles[i].y+32)<20){
 			health-=10;
-			if health <= 0 {
+			if health < 1 {
 				setDM("You got closed!");
 				send(userName + " was closed.","#00AAFF");
 			}
