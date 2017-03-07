@@ -345,6 +345,10 @@ function handleProjectiles(){
 		}
 		if (projectiles[i].type=="AC" && dist(-playerX,playerY,projectiles[i].x-32,projectiles[i].y+32)<20){
 			health-=10;
+			if health <= 0 {
+				setDM("You got closed!");
+				send(userName + " was closed.","#00AAFF");
+			}
 		};
 		if (projectiles[i].type=="Missile"){
 			var tx = Math.cos(rad(projectiles[i].dir))*25;
