@@ -465,6 +465,7 @@ function handleKeyDown(evt){
 		if (evt.keyCode==13){
 			document.getElementById("chatInput").style.visibility = "visible";
 			document.getElementById("chatInput").focus();
+			inChat = true
 		};
 		if (evt.keyCode==69){
 			if (autoFire) {
@@ -474,6 +475,11 @@ function handleKeyDown(evt){
 				autoFire = true;
 				send("Auto Fire enabled","#00FF00");
 			};
+		};
+	} else {
+		if (evt.keyCode==13){
+			document.getElementById("chatInput").style.visibility = "hidden";
+			inChat = false
 		};
 	};
 };	
