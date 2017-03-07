@@ -443,9 +443,9 @@ function closeArena() {
 function sendMSG(){
 	var msg = document.getElementById("chatInput").value;
 	document.getElementById("chatInput").value = "";
-	if (msg.charAt(0) != "/" || msg.length != 0) {
+	if (msg.charAt(0) != "/" && msg.length != 0) {
 		send(userName + ": " + msg,"#FFFFFF");
-	} else {
+	} else if (msg.charAt(0) == "/" {
 		if (msg == "/close") {
 			closeArena();
 		};
