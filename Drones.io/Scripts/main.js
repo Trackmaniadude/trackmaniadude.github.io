@@ -13,6 +13,8 @@ var onGround = false;
 var Pclass = "General";
 var autoFire = false;
 
+var inChat = false
+
 var arenaStatus = "open";
 
 //Used with mobile controls.
@@ -34,8 +36,6 @@ var terrain = [];
 for (var i=0; i<1; i+=0.005){
 	terrain.push(Math.round(perlin.Noise(i*10,0.5,seed)*100)/100);
 };
-
-var killedBy = "misc"
 
 var playerX = Math.random()*10000, playerY = terrain[Math.round(playerX/50)]*2500, playerR = 0;
 var camX = playerX, camY = playerY, camShake = 0, zoom = 1, azoom = zoom;
@@ -457,27 +457,31 @@ function send(msg,color){
 };
 
 function handleKeyDown(evt){
-	keysPressed[evt.keyCode] = true;
-	if (evt.keyCode==81){
-		swapWeapon();
-	};
-	if (evt.keyCode==13){
-		document.getElementById("chatInput").style.visibility = "visible";
-		document.getElementById("chatInput").focus();
-	};
-	if (evt.keyCode==69){
-		if (autoFire) {
-			autoFire = false;
-			send("Auto Fire disabled","#FFDD00");
-		} else {
-			autoFire = true;
-			send("Auto Fire enabled","#00FF00");
+	if (!inChat) {
+		keysPressed[evt.keyCode] = true;
+		if (evt.keyCode==81){
+			swapWeapon();
+		};
+		if (evt.keyCode==13){
+			document.getElementById("chatInput").style.visibility = "visible";
+			document.getElementById("chatInput").focus();
+		};
+		if (evt.keyCode==69){
+			if (autoFire) {
+				autoFire = false;
+				send("Auto Fire disabled","#FFDD00");
+			} else {
+				autoFire = true;
+				send("Auto Fire enabled","#00FF00");
+			};
 		};
 	};
 };	
 function handleKeyUp(evt){
-	keysPressed[evt.keyCode] = false;
-	return evt.keyCode;
+	if (!inChat) {
+		keysPressed[evt.keyCode] = false;
+		return evt.keyCode;
+	}
 };	
 function handleMouseMove(evt){
 	mouseX = evt.clientX;
