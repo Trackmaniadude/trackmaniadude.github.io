@@ -35,6 +35,8 @@ for (var i=0; i<1; i+=0.005){
 	terrain.push(Math.round(perlin.Noise(i*10,0.5,seed)*100)/100);
 };
 
+var killedBy = "misc"
+
 var playerX = Math.random()*10000, playerY = terrain[Math.round(playerX/50)]*2500, playerR = 0;
 var camX = playerX, camY = playerY, camShake = 0, zoom = 1, azoom = zoom;
 
@@ -345,7 +347,7 @@ function handleProjectiles(){
 		}
 		if (projectiles[i].type=="AC" && dist(-playerX,playerY,projectiles[i].x-32,projectiles[i].y+32)<20){
 			health-=10;
-			if health < 1 {
+			if (health<1) {
 				setDM("You got closed!");
 				send(userName + " was closed.","#00AAFF");
 			}
