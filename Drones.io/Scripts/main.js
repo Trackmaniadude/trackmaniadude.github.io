@@ -308,7 +308,7 @@ function controls(){
 		audio.play();
 			
 		var shootDir = pointTo(mouseX,mouseY,centerOffsetX+playerX-camX,centerOffsetY-playerY+camY);
-		projectiles.push({x:-playerX,y:playerY,dir:shootDir,time:100,xv:Math.cos(rad(shootDir))*10-xV,yv:yV+Math.sin(rad(shootDir))*10,type:"Rapid"});
+		projectiles.push({x:-playerX,y:playerY,dir:shootDir,time:100,xv:Math.cos(rad(shootDir))*25,yv:Math.sin(rad(shootDir))*25,type:"Rapid"});
 
 		reload = 3;
 	}
