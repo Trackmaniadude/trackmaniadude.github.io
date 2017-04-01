@@ -1,44 +1,74 @@
 <html>
-
-
-	<!DOCTYPE html>
 	<head>
-		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 		<title>Trackmaniadude's Site</title>
-		<meta charset="utf8"></meta>
+		<meta charset="utf8">
 		<style>
-			button {
-				font-size: 24px;
-				transition-duration: 0.5s;
-				width: 33vw;
-				height: 100px;
-				background-color: #008CBA;
-				border-radius: 4px;
-				border: 2px solid #008CBA;
+			* {
+				font-family: Impact, Charcoal, sans-serif;
 				color: white;
 			}
 			
+			#leftsidebar {
+				background-color: #333333;
+				position: fixed;
+				width: 250px;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+			
+			button {
+				background-color: #004477;
+				margin: 0px;
+				margin-top: 1px;
+				padding: 15px;
+				border: none;
+				outline: none;
+				text-align: center;
+				width: 100%;
+				transition-duration: 0.1s;
+				box-shadow: 0px 10px #001122, -10px 10px #111111;
+			}
 			button:hover {
-				background-color: white;
-				box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-				color: black;
+				margin-left: 10px;
+				background-color: #3366AA;
+			}
+			
+			#main {
+				position: fixed;
+				width: calc(100% - 250px);
+				height: 100%;
+				left: 250px;
+				top: 0;
+			}
+			
+			#img {
+				position: absolute;
+				margin: auto;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				max-width: 80%;
+				max-height: 80%;
+				opacity: 0;
+				transition-duration: 1s;
+				border: 5px solid black;
+				box-shadow: 0px 10px 15px #000000;
 			}
 		</style>
 	</head>
-  <body>
-
-			<a href="2.html"><button style='position:fixed; left:25%; font-size: 16px; top:175px; width:15vw; height:30px;'>Other</button></a>
-			<a><button style='position:fixed; left:42.5%; font-size: 16px; top:175px; width:15vw; height:30px;'>Diep.io</button></a>
-			<a href="3.html"><button style='position:fixed; right:25%; font-size: 16px; top:175px; width:15vw; height:30px;'>Text</button></a>
-		
-
-	  <div id="Diep Buttons" style='position:fixed; top:200px; left:33vw; top:33vh; width:33vw; height:33vh;'>
-		<a href="FTB/ftb.html" style='position:absolute; width:33vw;'>
-			<button id="color">Fantasy Tank Builder</button>
-		</a>
-		<a href="DSM/dsm.html" style='position:absolute; bottom:0px; width:33vw;'>
-			<button>Diep.io Scene Creator</button>
-		</a>  
-	  </div>
-  </body>
+	<body background="bg.png">
+		<script src="main.js"></script>
+		<div id="leftsidebar">
+			<p style="box-shadow: 0px 10px #001122; margin: 0px; padding: 15px; text-align: center; background-color: #00AAFF;">Trackmaniadude's Site</p>
+			<a onmouseover="setIMG('dronesgmp.png')" href="/Drones.io/Dronesio.html"><button style="background-image: url(drones.png); background-position: 10px center; background-repeat: no-repeat;">Drones.io</button></a>
+			<a onmouseover="setIMG('ftbimg.png')" href="FTB/ftb.html"><button style="background-image: url(diep.png); background-position: 10px center; background-repeat: no-repeat;">Fantasy Tank Builder</button></a>
+			<a onmouseover="setIMG('dsmimg.png')" href="DSM/dsm.html"><button style="background-image: url(diep.png); background-position: 10px center; background-repeat: no-repeat;">Diep.io Scene Maker</button></a>
+		</div>
+		<div id="main">
+			<img id="img" src=""></img>
+		</div>
+	</body>
 </html>
