@@ -26,6 +26,8 @@ function joyOut() {
 }
 
 var joyStick = setInterval(function(){
+  jX = mX;
+  jY = mY;
   if (jD && jH) {
     document.getElementById("joystick").style.transform = "translate("+jX+"px,"+jY+"px)";
   }
