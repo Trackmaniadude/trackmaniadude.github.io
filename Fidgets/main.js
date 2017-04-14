@@ -2,8 +2,8 @@ var mX = 0
 var mY = 0
 var mD = false
 function showCoords(event) {
-    mX = event.clientX;
-    mY = event.clientY;
+  mX = event.clientX;
+  mY = event.clientY;
 }
 function Down() {
   mD = true;
@@ -25,12 +25,12 @@ function joyOut() {
 }
 
 var joyStick = setInterval(function(){
-  jX = mX;
-  jY = mY;
   if (mD && jH) {
-    document.getElementById("joystick").style.transform = "translate("+(jX-100)+"px,"+(jY-100)+"px)";
+    jX = Math.min(Math.max(mX,-20),20);
+    jY = Math.min(Math.max(mY,-20),20);
   } else {
     jX/=1.1;
     jY/=1.1;
   }
+  document.getElementById("joystick").style.transform = "translate("+(jX-100)+"px,"+(jY-100)+"px)";
 },50);
