@@ -34,3 +34,33 @@ var joyStick = setInterval(function(){
   }
   document.getElementById("joystick").style.transform = "translate("+jX+"px,"+(jY-15)+"px)";
 },50);
+
+//Switch
+var state = false
+
+function toggleSwitch() {
+  state = !state
+  if (state) {
+    document.getElementById("s1").style.top = "50%";
+	document.getElementById("s1").style.backgroundColor = "#FF9900";
+	document.getElementById("s2").style.backgroundColor = "#CC6600";
+	document.getElementById("s2").style.top = "-12px";
+	document.getElementById("s2").style.height = "calc(12px + 50%)";
+	
+	document.getElementById("switchL1-1").style.backgroundColor = "#00CC00";
+	document.getElementById("switchL1-2").style.backgroundColor = "#33FF33";
+	document.getElementById("switchL2-1").style.backgroundColor = "#770000";
+	document.getElementById("switchL2-2").style.backgroundColor = "#CC0000";
+  } else {
+    document.getElementById("s1").style.top = "calc(-12px + 50%)";
+	document.getElementById("s1").style.backgroundColor = "#CC6600";
+	document.getElementById("s2").style.backgroundColor = "#FF9900";
+	document.getElementById("s2").style.top = "0%";
+	document.getElementById("s2").style.height = "50%";
+	
+	document.getElementById("switchL1-1").style.backgroundColor = "#004400";
+	document.getElementById("switchL1-2").style.backgroundColor = "#008800";
+	document.getElementById("switchL2-1").style.backgroundColor = "#CC0000";
+	document.getElementById("switchL2-2").style.backgroundColor = "#FF3333";
+  }
+}
