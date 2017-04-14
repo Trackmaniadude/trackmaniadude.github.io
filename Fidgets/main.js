@@ -26,8 +26,8 @@ function joyOut() {
 
 var joyStick = setInterval(function(){
   if (mD && jH) {
-    jX = Math.min(Math.max(mX-380,-20),20);
-    jY = Math.min(Math.max(mY-90,-20),20);
+    jX = Math.min(Math.max(mX-380,-15),15);
+    jY = Math.min(Math.max(mY-110,-15),15);
   } else {
     jX/=1.1;
     jY/=1.1;
