@@ -26,11 +26,11 @@ function joyOut() {
 
 var joyStick = setInterval(function(){
   if (mD && jH) {
-    jX = Math.min(Math.max(mX,-20),20);
-    jY = Math.min(Math.max(mY,-20),20);
+    jX = Math.min(Math.max(mX-100,-20),20);
+    jY = Math.min(Math.max(mY-100,-20),20);
   } else {
     jX/=1.1;
     jY/=1.1;
   }
-  document.getElementById("joystick").style.transform = "translate("+(jX-100)+"px,"+(jY-100)+"px)";
+  document.getElementById("joystick").style.transform = "translate("+jX+"px,"+jY+"px)";
 },50);
