@@ -29,8 +29,8 @@ var joyStick = setInterval(function(){
     jX = Math.min(Math.max(mX-380,-15),15);
     jY = Math.min(Math.max(mY-110,-15),15);
   } else {
-    jX/=1.1;
-    jY/=1.1;
+    jX/=1.3;
+    jY/=1.3;
   }
   document.getElementById("joystick").style.transform = "translate("+jX+"px,"+(jY-15)+"px)";
 },50);
