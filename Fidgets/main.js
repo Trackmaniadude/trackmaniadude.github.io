@@ -32,5 +32,5 @@ var joyStick = setInterval(function(){
     jX/=1.1;
     jY/=1.1;
   }
-  document.getElementById("joystick").style.transform = "translate("+jX+"px,"+jY+"px)";
+  document.getElementById("joystick").style.transform = "translate("+jX+"px,"+(jY-30)+"px)";
 },50);
