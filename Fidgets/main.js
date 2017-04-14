@@ -29,5 +29,8 @@ var joyStick = setInterval(function(){
   jY = mY;
   if (mD && jH) {
     document.getElementById("joystick").style.transform = "translate("+(jX-100)+"px,"+(jY-100)+"px)";
+  } else {
+    jX/=1.1;
+    jY/=1.1;
   }
 },50);
