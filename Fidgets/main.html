@@ -5,6 +5,9 @@
 		<style>
 			* {
 				font-family: Impact, Charcoal, sans-serif;
+                -webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
 				color: white;
 			}
 			
@@ -19,8 +22,16 @@
 			.box1x1 {
 				display: inline-block;
 				margin: 25px;
-				width: 160px;
-				height: 160px;
+				width: 180px;
+				height: 180px;
+				background-color: rgba(0,0,0,0.5);
+				padding: 20px;
+			}
+			.box1x3 {
+				display: inline-block;
+				margin: 25px;
+				width: calc(180px * 3 + 106px);
+				height: 180px;
 				background-color: rgba(0,0,0,0.5);
 				padding: 20px;
 			}
@@ -47,7 +58,7 @@
 			<p class="boxname">Joystick</p>
 			<div style="position: relative; top: -30%; width: 100%; height: 100%; background-color: #777777;">
 				<div style="position:absolute; top:-10px; left:0%; width:100%; height:100%; background-color: #AAAAAA;">
-					<div id="joystick" onmouseover="joyOver()" onmouseout="joyOut()" style="box-shadow:0 15px 10px rgba(0,0,0,0.5); border-radius:100%; position:absolute; top:10%; left:10%; width:80%; height:80%; background-color: #0077AA;">
+					<div id="joystick" onmouseover="joyOver()" onmouseout="joyOut()" style="box-shadow: rgba(0, 0, 0, 0.498039) 0px 15px 10px; border-radius: 100%; position: absolute; top: 10%; left: 10%; width: 80%; height: 80%; background-color: rgb(0, 119, 170); transform: translate(0px, -15px);">
 						<div style="border-radius:100%; position:absolute; top:-5px; left:0%; width:100%; height:100%; background-color: #00AAFF;">
 							<div style="box-shadow:0px -2px 0px #0077AA; border-radius:100%; position:absolute; top:calc(20% + 2px); left:20%; width:60%; height:60%; background-color: #0099CC;"></div>
 						</div>
@@ -61,17 +72,34 @@
 			<div style="position: relative; top: -30%; width: 100%; height: 100%; background-color: #777777;">
 				<div style="position:absolute; top:-10px; left:0%; width:100%; height:100%; background-color: #AAAAAA;">
 					<div onclick="toggleSwitch()" id="switch" style="position:absolute; top:10%; left:10%; width:30%; height:80%; background-color: #AA3300;">
-						<div id="s1" style="position:absolute; top:calc(-12px + 50%); left:0%; width:100%; height:50%; background-color: #CC6600;"></div>
-						<div id="s2" style="position:absolute; top:0%; left:0%; width:100%; height:50%; background-color: #FF9900;"></div>
+						<div id="s1" style="position: absolute; top: calc(-12px + 50%); left: 0%; width: 100%; height: 50%; background-color: rgb(204, 102, 0);"></div>
+						<div id="s2" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 50%; background-color: rgb(255, 153, 0);"></div>
 					</div>
-					<div id="switchL1-1" style="position:absolute; top:20%; right:15%; width:30%; height:20%; background-color: #004400;">
-						<div id="switchL1-2" style="position:absolute; top:-5px; left:0%; width:100%; height:100%; background-color: #008800;"></div>
+					<div id="switchL1-1" style="position: absolute; top: 20%; right: 15%; width: 30%; height: 20%; background-color: rgb(0, 68, 0);">
+						<div id="switchL1-2" style="position: absolute; top: -5px; left: 0%; width: 100%; height: 100%; background-color: rgb(0, 136, 0);"></div>
 					</div>
-					<div id="switchL2-1" style="position:absolute; bottom:20%; right:15%; width:30%; height:20%; background-color: #AA0000;">
-						<div id="switchL2-2" style="position:absolute; top:-5px; left:0%; width:100%; height:100%; background-color: #FF3333;"></div>
+					<div id="switchL2-1" style="position: absolute; bottom: 20%; right: 15%; width: 30%; height: 20%; background-color: rgb(204, 0, 0);">
+						<div id="switchL2-2" style="position: absolute; top: -5px; left: 0%; width: 100%; height: 100%; background-color: rgb(255, 51, 51);"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-</body></html>
+
+<div id="switchF" class="box1x3">
+			<p class="boxname">Switch</p>
+			<div style="position: relative; top: -30%; width: 100%; height: 100%; background-color: #777777;">
+				<div style="position:absolute; top:-10px; left:0%; width:100%; height:100%; background-color: #AAAAAA;">
+					<div onclick="toggleSwitch()" id="switch" style="position:absolute; top:10%; left:10%; width:30%; height:80%; background-color: #AA3300;">
+						<div id="s1" style="position: absolute; top: calc(-12px + 50%); left: 0%; width: 100%; height: 50%; background-color: rgb(204, 102, 0);"></div>
+						<div id="s2" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 50%; background-color: rgb(255, 153, 0);"></div>
+					</div>
+					<div id="switchL1-1" style="position: absolute; top: 20%; right: 15%; width: 30%; height: 20%; background-color: rgb(0, 68, 0);">
+						<div id="switchL1-2" style="position: absolute; top: -5px; left: 0%; width: 100%; height: 100%; background-color: rgb(0, 136, 0);"></div>
+					</div>
+					<div id="switchL2-1" style="position: absolute; bottom: 20%; right: 15%; width: 30%; height: 20%; background-color: rgb(204, 0, 0);">
+						<div id="switchL2-2" style="position: absolute; top: -5px; left: 0%; width: 100%; height: 100%; background-color: rgb(255, 51, 51);"></div>
+					</div>
+				</div>
+			</div>
+		</div></body></html>
