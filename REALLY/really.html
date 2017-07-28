@@ -49,43 +49,45 @@
 			</p>
 	</body>
 	<script>
-		var reallys = -5
-		function rad(angle) {
-			return angle * (Math.PI / 180);
-		};
-		//Go really a lot.
-		var audio = new Audio('rlybegin.wav');
-		audio.volume = 1;
-		audio.play();
-		setTimeout(function() {
-			var really = new Audio('reallyloop.wav');
-			really.volume = 1;
-			really.play();
-			setInterval(function() {
+		audio.addEventListener('canplaythrough', function() {
+			var reallys = -5
+			function rad(angle) {
+				return angle * (Math.PI / 180);
+			};
+			//Go really a lot.
+			var audio = new Audio('rlybegin.wav');
+			audio.volume = 1;
+			audio.play();
+			setTimeout(function() {
 				var really = new Audio('reallyloop.wav');
 				really.volume = 1;
 				really.play();
-			},7400);
-		},25480);
-		var rlys = 0;
-		var one = document.getElementById("rly1");
-		var two = document.getElementById("rly2");
-		var xd = document.getElementById("rlys");
-		setInterval(function() {
-			if (rlys==0 || rlys==15) {
-				reallys++
-			}
-			rlys+=0.5;
-			rlys=rlys%30;
-			rlys2 = rlys+15;
-			rlys2=rlys2%30;
-			one.style.top = (65-rlys)+"%";
-			one.style.opacity = Math.sin(rad(rlys*6));
-			two.style.top = (65-rlys2)+"%";
-			two.style.opacity = Math.sin(rad(rlys2*6));
-			if (reallys>0) {
-				xd.innerHTML = "REALLYS: "+reallys;
-			}
-		},1000/60);
+				setInterval(function() {
+					var really = new Audio('reallyloop.wav');
+					really.volume = 1;
+					really.play();
+				},7400);
+			},25480);
+			var rlys = 0;
+			var one = document.getElementById("rly1");
+			var two = document.getElementById("rly2");
+			var xd = document.getElementById("rlys");
+			setInterval(function() {
+				if (rlys==0 || rlys==15) {
+					reallys++
+				}
+				rlys+=0.5;
+				rlys=rlys%30;
+				rlys2 = rlys+15;
+				rlys2=rlys2%30;
+				one.style.top = (65-rlys)+"%";
+				one.style.opacity = Math.sin(rad(rlys*6));
+				two.style.top = (65-rlys2)+"%";
+				two.style.opacity = Math.sin(rad(rlys2*6));
+				if (reallys>0) {
+					xd.innerHTML = "REALLYS: "+reallys;
+				}
+			},1000/60);
+		}, false);
 	</script
 </html>
