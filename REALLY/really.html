@@ -32,8 +32,24 @@
 			>
 				REALLY
 			</p>
+			<p id="rlys" style="position:absolute;
+				bottom:0px;
+				left:50px;
+				font-weight:bold;
+				text-transform:uppercase;
+				color:#FFFFFF;
+				letter-spacing:1pt;
+				word-spacing:2pt;
+				font-size:44px;
+				text-align:center;
+				font-family:courier new, courier, monospace;
+				line-height:1;"
+			>
+				REALLYS: 0
+			</p>
 	</body>
 	<script>
+		var reallys = -5
 		function rad(angle) {
 			return angle * (Math.PI / 180);
 		};
@@ -54,7 +70,11 @@
 		var rlys = 0;
 		var one = document.getElementById("rly1");
 		var two = document.getElementById("rly2");
+		var xd = document.getElementById("rlys");
 		setInterval(function() {
+			if (rlys==0 || rlys==15) {
+				reallys++
+			}
 			rlys+=0.5;
 			rlys=rlys%30;
 			rlys2 = rlys+15;
@@ -63,6 +83,9 @@
 			one.style.opacity = Math.sin(rad(rlys*6));
 			two.style.top = (65-rlys2)+"%";
 			two.style.opacity = Math.sin(rad(rlys2*6));
+			if (reallys>0) {
+				xd.innerHTML = "REALLYS: "+reallys;
+			}
 		},1000/60);
 	</script
 </html>
