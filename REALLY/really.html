@@ -49,14 +49,14 @@
 			</p>
 	</body>
 	<script>
+		var reallys = -5
+		function rad(angle) {
+			return angle * (Math.PI / 180);
+		};
+		//Go really a lot.
+		var audio = new Audio('rlybegin.wav');
+		audio.volume = 1;
 		audio.addEventListener('canplaythrough', function() {
-			var reallys = -5
-			function rad(angle) {
-				return angle * (Math.PI / 180);
-			};
-			//Go really a lot.
-			var audio = new Audio('rlybegin.wav');
-			audio.volume = 1;
 			audio.play();
 			setTimeout(function() {
 				var really = new Audio('reallyloop.wav');
