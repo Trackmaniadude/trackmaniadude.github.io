@@ -1,0 +1,68 @@
+<html>
+	<body style="background-color:#f44242;">
+			<p id="rly1" style="position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-100%);
+				font-weight:bold;
+				text-transform:uppercase;
+				color:#FFFFFF;
+				letter-spacing:1pt;
+				word-spacing:2pt;
+				font-size:44px;
+				text-align:center;
+				font-family:courier new, courier, monospace;
+				line-height:1;"
+			>
+				REALLY
+			</p>
+			<p id="rly2" style="position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-100%);
+				font-weight:bold;
+				text-transform:uppercase;
+				color:#FFFFFF;
+				letter-spacing:1pt;
+				word-spacing:2pt;
+				font-size:44px;
+				text-align:center;
+				font-family:courier new, courier, monospace;
+				line-height:1;"
+			>
+				REALLY
+			</p>
+	</body>
+	<script>
+		function rad(angle) {
+			return angle * (Math.PI / 180);
+		};
+		//Go really a lot.
+		var audio = new Audio('rlybegin.wav');
+		audio.volume = 1;
+		audio.play();
+		setTimeout(function() {
+			var really = new Audio('reallyloop.wav');
+			really.volume = 1;
+			really.play();
+			setInterval(function() {
+				var really = new Audio('reallyloop.wav');
+				really.volume = 1;
+				really.play();
+			},7400);
+		},25480);
+		var rlys = 0;
+		var one = document.getElementById("rly1");
+		var two = document.getElementById("rly2");
+		setInterval(function() {
+			rlys+=0.5;
+			rlys=rlys%30;
+			rlys2 = rlys+15;
+			rlys2=rlys2%30;
+			one.style.top = (65-rlys)+"%";
+			one.style.opacity = Math.sin(rad(rlys*6));
+			two.style.top = (65-rlys2)+"%";
+			two.style.opacity = Math.sin(rad(rlys2*6));
+		},1000/60);
+	</script
+</html>
