@@ -1,0 +1,325 @@
+@keyframes hover {
+    from {top:25px;}
+    to {top:75px;}
+}
+
+key {
+	text-align:center;
+	text-shadow:none;
+	border-radius:5px;
+	border:none;
+	background-color:#444;
+	font-size:150%;
+	padding:5px 10px 5px 10px;
+	transform: translate(-10px,0px);
+	box-shadow: 0px 5px #222;
+}
+
+key:hover {
+	transform: translate(-10px,3px);
+	box-shadow: 0px 2px #222;
+}
+
+keydown {
+	text-align:center;
+	text-shadow:none;
+	border-radius:5px;
+	color:#777;
+	border:none;
+	background-color:#444;
+	font-size:150%;
+	padding:5px 10px 5px 10px;
+	transform: translate(-10px,3px);
+	box-shadow: 0px 2px #222;
+}
+
+.gameTitle {
+	position:absolute;
+	font-size:500%;
+	font-weight:600;
+	text-align:center;
+	width:100%;
+	height:0px;
+	top:0px;
+	left:0px;
+	animation-name:hover;
+    animation-duration:2s;
+	animation-iteration-count:infinite;
+	animation-direction:alternate;
+	animation-timing-function:ease-in-out;
+}
+
+body {
+	overflow:hidden;
+	font-weight: 600;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, -1px -1px black, -1px 1px black, 1px 1px black, 1px -1px black;
+	border: none;
+	margin: 5px;
+	background-color: #000;
+	font-family:courier;
+}
+
+#noscript {
+	background-color: red;
+	left: 0;
+	text-align: center;
+	top: 0;
+	padding: 5px;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+}
+
+#noscript h1 {
+	font-size: 1.8em;
+}
+
+#game {
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	padding:0;
+	margin: 0;
+	width:100%;
+	height:100%;
+	background-color: #CDCDCD;
+}
+
+textarea {
+	outlines: none;
+	background-color: #f8f8f8;
+	color: black;
+	resize: both;
+	width: 150px;
+	height: 40px;
+	line-height: 14px;
+	font-weight: 600;
+	border: 2px solid black;
+	border-radius: 3px;
+	user-select: text;
+	padding: 1px;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+}
+
+input {
+	outlines: none;
+	background-color: #999999;
+	color: #555555;
+	resize: both;
+	line-height: 20px;
+	font-weight: 600;
+	border: 2px solid #555555;
+	border-radius: 10px;
+	user-select: text;
+	padding: 4px;
+	text-align: center;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+}
+
+input:hover {
+	background-color: #CCCCCC;
+}
+
+select {
+	outlines: none;
+	background-color: #999999;
+	color: #555555;
+	font-weight: 600;
+	border: 2px solid #555555;
+	border-radius: 10px;
+	padding: 4px;
+	text-align: center;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+}
+
+select:hover {
+	background-color: #CCCCCC !important;
+}
+
+select:active {
+	background-color: #999999 !important;
+}
+
+select:focus {
+	background-color: #999999 !important;
+}
+
+textarea:hover, textarea:focus, select:hover, select:focus{
+	background-color: white;
+}
+
+/* Default for all buttons */
+button {
+	outline:none;
+	outlines: none;
+	background-color: #999;
+	border: none;
+	color: #333333;
+	width: 100px;
+	height:30px;
+	line-height: 15px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	padding: 1px;
+}
+
+button:hover {
+	background-color: #AAA;
+}
+
+button:active {
+	background-color: #888;
+}
+/* End buttons */
+
+/* Checkboxes - use for default */
+.toggle {
+	width: 55px;
+	height: 20px;
+	background: #333333;
+	margin: 20px auto;
+	position: relative;
+	border-radius: 2px;
+}
+
+.toggle:after {
+	content: 'OFF';
+	color: #F14E54;
+	position: absolute;
+	right: 3px;
+	z-index: 0;
+	font-weight: 600;
+}
+
+.toggle:before {
+  content: 'ON';
+  color: #00E16E;
+  position: absolute;
+  left: 3px;
+  z-index: 0;
+	font-weight: 600;
+}
+
+.toggle label {
+	display: block;
+	width: 25px;
+	height: 16px;
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	z-index: 1;
+	background-color: #8B8B8B; 
+	background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(173,173,173,1) 50%);
+	border: 1px solid #333333;
+	border-radius: 2px;
+	transition: all 0.1s ease;
+}
+
+.toggle input[type=checkbox] {
+  visibility: hidden;
+}
+
+.toggle input[type=checkbox]:checked + label {
+	left: 27px;
+}
+/* End checkboxes */
+
+kbd {
+	box-shadow: 0 3px 0px 0 #aaa;
+	background-color: #ddd;
+	border: 1px solid #bbb;
+	border-radius: 0.2em;
+	color: black;
+	font-weight: 600;
+	line-height: 1.5em;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: none;
+	margin: 0em 0.13em;
+	padding: 0.0em 0.5em;
+}
+
+str {
+	background-color: #999999;
+	border-radius: 10px;
+	font-weight: bold;
+	margin: 0em 0.13em;
+	padding: 0.0em 0.5em;
+}
+
+p {
+	font-weight:normal;
+}
+
+#chatInput {
+	opacity: 0.5;
+	background-color: #000000;
+	color: #FFFFFF;
+	resize: both;
+	line-height: 20px;
+	font-weight: 600;
+	border: none;
+	border-radius: 0px;
+	user-select: text;
+	padding: 4px;
+	text-align: center;
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+}
+
+#ChangeLog {
+	z-index: 10;
+	overflow: hidden;
+	position: absolute;
+	top: 10px; left:calc(50% - 100px);
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	background-color: #999999;
+	border: 2px solid #555555;
+	border-radius: 10px;
+	transition-duration: 0.5s;
+}
+
+#ChangeLog:hover {
+	overflow-y: scroll;
+	width: 600px;
+	height: calc(100% - 40px);
+	left: calc(50% - 300px)
+}
+
+#CL {
+	padding:5px;
+	width: 600px;
+	text-align: left;
+}
+
+.CLEntry {
+	width:564px;
+	padding:5px;
+	background-color: #777777;
+	border: none;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#logo {
+    animation-name: move;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes move {
+    0%   {transform: translateY(20px);}
+    50%   {transform: translateY(-20px);}
+    100%   {transform: translateY(20px);}
+}
