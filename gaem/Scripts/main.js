@@ -6,6 +6,8 @@ vector2.new = function(x,y) {
 	return v3;
 }
 
+var difficulty = 1
+
 var time = 0;
 var timer = setInterval(function() {
 	time+=0.1;
@@ -93,7 +95,6 @@ function lerp(v0,v1,t,exp) {
 function getShipPosition() {
 	var airOffset = (air/85)*(canvasSize.Y/5);
 	var r = center.Y-12+(Math.sin(rad(gameSteps*5))*2)-airOffset;
-	console.log(r);
 	var p = vector2.new(Math.sin(rad(rotation))*-r,Math.cos(rad(rotation))*r);
 	return [vector2.new(center.X+p.X,center.Y+p.Y),vector2.new(Math.sin(rad(rotation)),Math.cos(rad(rotation)))];
 }
@@ -386,7 +387,13 @@ function runStep() {
 				}
 			}
 		}
-		dist=dist+(speed/20);
+		if (difficulty==3) {
+			dist=dist+(speed/15);
+		} else if (difficulty==2) {
+			dist=dist+(speed/20);
+		} else {
+			dist=dist+(speed/25);
+		}
 		renderStep();
 	}
 }
@@ -395,6 +402,8 @@ var gameTimer = setInterval(runStep,1000/30);
 
 function startGame() {
 	//Get game ready and run.
+	difficulty = document.getElementById("difSelect").value;
+	console.log(difficulty);
 	time = 0;
 	speed = 0;
 	rotation = 0;
