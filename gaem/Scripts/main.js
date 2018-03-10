@@ -30,6 +30,10 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var canvasSize = vector2.new(canvas.width,canvas.height);
 
+document.getElementById("hiEasy").innerHTML = "HI-EASY : "+getCookie("hiEasy");
+document.getElementById("hiMedium").innerHTML = "HI-MEDIUM : "+getCookie("hiMedium");
+document.getElementById("hiHard").innerHTML = "HI-HARD : "+getCookie("hiHard");
+
 function handleKeyDown(evt){
 	keysPressed[evt.keyCode] = true;
 };	
@@ -55,16 +59,33 @@ var musicTimer = undefined;
 var musicLoop = undefined;
 var song = undefined;
 function startMusic() {
+	var startlen,looplen,songId,songIdl;
+	if(difficulty==3){
+		startlen=18518;
+		looplen=14814;
+		songIds='Sounds/song2Start.wav';
+		songIdl='Sounds/song2Loop.wav';
+	}else if(difficulty==2){
+		startlen=23278;
+		looplen=18622;
+		songIds='Sounds/songStart.wav';
+		songIdl='Sounds/songLoop.wav';
+	}else{
+		startlen=27254;
+		looplen=21804;
+		songIds='Sounds/song3Start.wav';
+		songIdl='Sounds/song3Loop.wav';
+	}
 	engineLoop.volume = 0.1;
-	song = new Audio('Sounds/songStart.wav');
+	song = new Audio(songIds);
 	song.volume = 1;
 	song.play();
 	musicTimer = window.setTimeout(function(){
 		musicLoop = window.setInterval(function(){
-			song = new Audio('Sounds/songLoop.wav');
+			song = new Audio(songIdl);
 			song.play();
-		},18622);
-	},23278-18622);
+		},looplen);
+	},startlen-looplen);
 }
 function stopMusic() {
 	engineLoop.volume = 0;
@@ -354,7 +375,11 @@ function runStep() {
 				air = 0;
 				airv = 0;
 			}
-			rotation+=rotationv;
+			if(difficulty==3){
+				rotation+=(rotationv*1.25);
+			}else{
+				rotation+=rotationv;
+			}
 			if (rotation>360) {
 				rotation-=360;
 			}
@@ -363,8 +388,8 @@ function runStep() {
 			}
 			rotationv/=1.25;
 			if (speed < 1) {
-				speed+=0.01;
-			} else if (speed < 1.5) {
+				speed=((speed-1)/1.02)+1;
+			} else if (speed < 1.1) {
 				speed = speed+=0.0005;
 			}
 		} else {
@@ -382,6 +407,21 @@ function runStep() {
 				if (gameSteps>70) {
 					document.getElementById("Game Screen").style.visibility = "visible";
 					document.getElementById("score").innerHTML = "TIME : "+Math.trunc(timeAtDeath*10)/10+" SECONDS"
+					//High score if thingy.
+					if(timeAtDeath>getCookie("hiEasy") && difficulty==1){
+						setCookie("hiEasy",timeAtDeath);
+					}
+					if(timeAtDeath>getCookie("hiMedium") && difficulty==2){
+						setCookie("hiMedium",timeAtDeath);
+					}
+					if(timeAtDeath>getCookie("hiHard") && difficulty==3){
+						setCookie("hiHard",timeAtDeath);
+					}
+					console.log(getCookie("hiMedium"));
+					document.getElementById("hiEasy").innerHTML = "HI-EASY : "+getCookie("hiEasy");
+					document.getElementById("hiMedium").innerHTML = "HI-MEDIUM : "+getCookie("hiMedium");
+					document.getElementById("hiHard").innerHTML = "HI-HARD : "+getCookie("hiHard");
+					//End that stuff xxxddd
 					document.getElementById("timer").style.visibility = "hidden";
 					running = false;
 				}
@@ -409,7 +449,6 @@ function startGame() {
 	rotation = 0;
 	rotationv = 0;
 	playerAlive = true;
-	document.getElementById("Start Screen").style.visibility = "hidden";
 	document.getElementById("Game Screen").style.visibility = "hidden";
 	document.getElementById("timer").style.visibility = "visible";
 	startMusic();
@@ -419,4 +458,34 @@ function startGame() {
 	sound.volume = 1;
 	sound.play();
 	running = true;
+}
+
+//Found some cookie functions on W3Schools
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function checkCookie(cname) {
+    var c = getCookie(cname);
+    if (c != "") {
+        return true;
+    } else {
+        return false;
+    }
 }
