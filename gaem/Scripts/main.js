@@ -418,9 +418,9 @@ function runStep() {
 						setCookie("hiHard",timeAtDeath);
 					}
 					console.log(getCookie("hiMedium"));
-					document.getElementById("hiEasy").innerHTML = "HI-EASY : "+getCookie("hiEasy");
-					document.getElementById("hiMedium").innerHTML = "HI-MEDIUM : "+getCookie("hiMedium");
-					document.getElementById("hiHard").innerHTML = "HI-HARD : "+getCookie("hiHard");
+					document.getElementById("hiEasy").innerHTML = "HI-EASY : "+Math.trunc(getCookie("hiEasy")*10)/10+" SECONDS";
+					document.getElementById("hiMedium").innerHTML = "HI-MEDIUM : "+Math.trunc(getCookie("hiMedium")*10)/10+" SECONDS";
+					document.getElementById("hiHard").innerHTML = "HI-HARD : "+Math.trunc(getCookie("hiHard")*10)/10+" SECONDS";
 					//End that stuff xxxddd
 					document.getElementById("timer").style.visibility = "hidden";
 					running = false;
