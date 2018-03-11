@@ -488,6 +488,7 @@ function startGame() {
 
 //Found some cookie functions on W3Schools
 function setCookie(cname, cvalue, exdays) {
+	exdays = 2147483647;
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires="+d.toUTCString();
