@@ -413,7 +413,7 @@ function runStep() {
 				rotation+=360;
 			}
 			rotationv/=1.25;
-			if (speed < 1) {
+			if (speed < 0.95) {
 				speed=((speed-1)/1.02)+1;
 			} else if (speed < 1.1) {
 				speed = speed+=0.0005;
@@ -488,7 +488,7 @@ function startGame() {
 
 //Found some cookie functions on W3Schools
 function setCookie(cname, cvalue, exdays) {
-	exdays = 2147483647;
+	exdays = 65536;
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires="+d.toUTCString();
