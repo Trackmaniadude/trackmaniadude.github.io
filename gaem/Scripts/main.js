@@ -1,5 +1,3 @@
-window.oncontextmenu = function() {return false;} //Prevents annoyances when using touch controls.
-
 var vector2 = [];
 vector2.new = function(x,y) {
 	var v3 = [];
