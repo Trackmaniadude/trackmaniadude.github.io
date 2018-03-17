@@ -406,9 +406,10 @@ function renderStep(){
 				ctx.fillStyle=bw(0);
 			}
 			ctx.beginPath();
+			ctx.rect(0,0,canvasSize.X,canvasSize.Y)
 			ctx.arc(lerp(center.X-offset.X,center.X,d/steps,1/4),lerp(center.Y-offset.Y,center.Y,d/steps,1/4),fac,0,rad(360));
-			ctx.rect(canvasSize.X,0,-canvasSize.X,canvasSize.Y)
-			ctx.fill();
+			ctx.mozFillRule = "evenodd";
+			ctx.fill("evenodd");
 			ctx.beginPath();
 			ctx.arc(lerp(center.X-offset.X,center.X,d/steps,1/4),lerp(center.Y-offset.Y,center.Y,d/steps,1/4),fac,0,rad(360));
 			ctx.stroke();
