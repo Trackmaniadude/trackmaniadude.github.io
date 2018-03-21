@@ -589,6 +589,7 @@ function startGame() {
 	rotationv = 0;
 	playerAlive = true;
 	document.getElementById("Game Screen").style.visibility = "hidden";
+	document.getElementById("Game Screen").style.opacity = 0.5;
 	document.getElementById("timer").style.visibility = "visible";
 	startMusic();
 	air = 0;
