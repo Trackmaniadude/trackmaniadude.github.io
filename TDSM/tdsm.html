@@ -1,0 +1,151 @@
+<html>
+
+
+	<!DOCTYPE html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+		<title>Diep.io scene maker</title>
+		<meta charset="utf8"></meta>
+	</head>
+
+		<script src='functions.js'></script>
+		<script src='main.js'></script>
+
+
+<body onload="handleOnLoad()">
+
+	<div id="editor">
+		
+		<canvas id="canvas" width=1280 height=720 style="position:absolute; cursor:url(cursorplace.png), auto; left:240px; top:0px;" onclick="handleClick()"></canvas>
+		<button id="hideButton" onclick="setHeaderVisibility()" style='position:fixed; top:198px; left:10px;'>Hide</button>
+		<div id="tools" >
+			<div id="tank-creation">
+				<p style='position:absolute; top:-15px; left:0px; width:100%; text-align:center; font-size: 150%;'>Tank Creation</p>
+				<p id="text1" style='position:absolute; top:17px; left:10px;'>Level: </p>
+				<p style='position:absolute; top:42px; left:10px;'>Color: </p>
+				<p style='position:absolute; top:67px; left:10px;'>Name: </p>
+				<p id="text4" style='position:absolute; top:92px; left:10px;'>Class: </p>
+				<p style='position:absolute; top:117px; left:10px;'>BodyType: </p>
+				<p style='position:absolute; top:142px; left:10px;'>Entity Type: </p>
+				<input type='number' name="Level" id="levelInput" value="1" style='position:absolute; top:25px; left:100px; width:121px;'></input>
+	
+				<input type="color" name="Color" id="colorInput"  value="#00B2E1" style='position:absolute; top:50px; left:196px; width:25px;'></input>	
+				<select id='colors' style='position:absolute; top:50px; left:100px;'>
+</optgroup><optgroup label='Playable Tank Colors'>
+			<option value='#00B2E1'>Blue</option>
+			<option value='#F14E54'>Red</option>
+			<option value='#00E16E'>Green</option>
+			<option value='#BF7FF5'>Purple</option>
+</optgroup><optgroup label='Other Tank Colors'>
+			<option value='#D48067'>Brown</option>
+			<option value='#FFE869'>Yellow</option>
+			<option value='#C0C0C0'>Fallen Gray</option>
+			<option value='#FA777A'>Defender Red</option>
+			<option value='#FFE869'>Summoner Yellow</option>
+			<option value='#EF7BDB'>Guardian Pink</option>
+</optgroup><optgroup label='Shape Colors'>
+			<option value='#FFE869'>Square Yellow</option>
+			<option value='#FA777A'>Triangle Red</option>
+			<option value='#7790F9'>Pentagon Blue</option>
+			<option value='#EF7BDB'>Crasher Pink</option>
+			<option value='#8DFD71'>Shape Green</option>
+			<option value='#FAC27C'>Necromancer Square Orange</option>
+</optgroup><optgroup label='Other'>
+			<option value='#555555'>Outline Gray</option>
+			<option value='#999999'>Barrel Gray</option>
+				</select>
+				<script>
+					document.getElementById('colors').onchange = function(){
+						setColorInput(document.getElementById('colors').value);
+					}
+				</script>
+				<input type="text" name="Name" id="nameInput" value="Tank" style='position:absolute; top:75px; left:100px; width:121px;'></input>
+				<select id="classInput" style='position:absolute; top:100px; left:100px; width:121px;'>
+</optgroup><optgroup label="Yes, there is nothing here. It's all done in functions.js">
+				</select>
+
+				<select id="btypeInput" style='position:absolute; top:125px; left:100px; width:121px;'>
+					<option value="circle">Circle</option>
+					<option value="square">Square</option>
+					<option value="triangle">Triangle</option>
+					<option value="pentagon">Pentagon</option>
+					<option value="smasher">Smasher</option>
+					<option value="landmine">Landmine</option>
+					<option value="spike">Spike</option>
+					<option value="dominator">Dominator</option>
+				</select>
+				<select id="etInput" style='position:absolute; top:150px; left:100px; width:121px;'>
+					<option value="tank">Tank</option>
+					<option value="shape">Shape/Ammunition</option>
+				</select>
+				<button id="delButton1" onclick="toggleDelMode()" style='position:absolute; height:20px; width:215px; top:174px; left:5px; visibility:visible;'>Delete Mode: Off</button>
+				<button id="delButton2" onclick="toggleDelMode()" style='position:absolute; height:20px; width:215px; top:174px; left:5px; visibility:hidden;'>Delete Mode: On</button>
+			</div>
+			<div id="scene-tools">
+				<p style='position:absolute; top:-15px; left:0px; width:100%; text-align:center; font-size: 150%;'>Scene Tools</p>
+				<div style='position:absolute; top:125px; left:5px; width:217px; text-align:center; font-size: 150%;'>
+					<button id="exportButton" onclick="exporttank()" style='position:absolute; top:0; left:33%; width:33%; border-left: none; border-right: none;'>Export</button>
+					<button id="importButton" onclick="importtank()" style='position:absolute; top:0; left:0; width:33%;'>Import</button>
+					<button id="clearButton" onclick="clearscene()" style='position:absolute; top:0; left:66%; width:33%;'>Clear</button>
+				</div>
+				<textarea id="scenecodeText" style='position:absolute; top:25px; left:5px; width: 215px; height: 100px;'></textarea>
+				<p style='position:absolute; top:137px; left:10px;'>Width:</p>
+				<p style='position:absolute; top:157px; left:10px;'>Height:</p>
+				<input type='number' id="sceneXW" value="800" style='position:absolute; top:145px; left:75px; width:70px;'>
+				<input type='number' id="sceneYW" value="600" style='position:absolute; top:165px; left:75px; width:70px;'>
+				<button id="applyButton" onclick="applySceneSize()" style='position:absolute; top:145px; width:75px; right:5px;'>Apply</button>
+				<button id="resetButton" onclick="resetSceneSize()" style='position:absolute; top:165px; width:75px; right:5px;'>Reset</button>
+			</div>
+			<div id="ftb-import">
+				<p style='position:absolute; top:-15px; left:0; width:100%; text-align:center; font-size: 150%;'>FTB Import</p>
+				<p style='position:absolute; top:12px; left:0; width:100%; text-align:center;'>Barrel Array/FTB Save</p>
+				<textarea name="BarrelArray" id="barrelsInput" value="[]" style='position:absolute; top:40px; left:5px; width: 215px; height: 100px;'></textarea>
+				<button id="convert" onclick="convert()" style='position:absolute; height:20px; width:215px; top:140px; left:5px;'>Convert</button>
+			</div>
+		</div>
+		
+		<div id="help" style='position:fixed; font-size: 12px; height:400px; width:300px; top:177px; left:850px; padding:5px;'>
+			<p><kbd>Left Mouse Button</kbd> - Place tank.</p>
+			<p><kbd>E</kbd> - Remove tank under mouse.</p>
+			<p>Hover over the tank preview to enlarge it.</p>
+			<p>When importing an FTB code, remove the code header (32*circle*00b2e1) so it's just the barrel array.</p>
+		</div>
+		
+		<!--<button id="showButton" onclick="setHeaderVisibility()" style='position:fixed; top:-2px; left:10px; visibility:hidden;'>Show</button>
+		<div id="sliderBG" style='position:fixed; height:20px; width:60px; top:177px; left:670px; '></div>
+		<p id="on" style='position:fixed; top:169px; left:678px;'>On</p>
+		<p id="off" style='position:fixed; top:169px; left:704px;'>Off</p>
+		<p id="zoomText" style='position:fixed; top:-5px; left:625px;'>Zoom:</p>
+		<p id="zoomOut" style='position:fixed; top:-5px; left:740px;'>100%</p>-->
+		<p id="mousePos" style='position:fixed; bottom:-5px; left:5px;'>X: Y:</p>
+		<!--<button id="togglePrev" onclick="togglePrev()" style='position:fixed; height:20px; width:30px; top:177px; left:700px;'></button>
+		<button id="toggleHelp" onclick="toggleHelp()" style='position:fixed; height:20px; width:50px; top:177px; left:800px;'>Help</button>
+		<input style='position:fixed; height:20px; width:69px; top:1px; left:665px;' id="zoom" type="range" min=".1" max="4" value=".75" step=".1">-->
+
+		<div id="Reddit" >
+			<img id="Snoo" src="Snoo.png" style='position:absolute; bottom:15px; right:0px; width:150px;'></img>
+			<a id="r/diepio" target="_blank" href="https://www.reddit.com/r/diepio/" style='position:absolute; bottom:0px; right:0px; width:150px;'>
+				<button id="rdiepio" style='width:150px;'>r/Diepio</button>
+			</a>
+			<a id="r/dsm" target="_blank" href="https://www.reddit.com/r/diepscenemaker/" style='position:absolute; bottom:20px; right:0px; width:150px;'>
+				<button id="rdsm" style='width:150px;'>r/DiepSceneMaker</button>
+			</a>
+		</div>
+		
+
+
+
+		<!--<div  id="lights" style='position:fixed; background-image: linear-gradient(0deg, #000000 0%, #000000 100%); width:1280; height:800; top:-15; left:0; opacity:0.75;'></div>-->
+				<canvas id="canvas3" width=150 height=150 style="position:fixed; left: 625px; top: 25px;" onclick="handleClick()"></canvas>
+
+		<div id="alert" style='position:fixed; font-size: 12px; height:100px; width:33vw; top:-120px; left:33vw; padding:5px; background-color: #ff0000; border: 2px solid black; border-radius: 3px;'>
+		<p id="alertText1" style='position:absolute; top:-5; left:5;'>"Alert text"<p>
+		<p id="alertText2" style='position:absolute; top:15; left:5;'>"Alert text"<p>
+		<p id="alertText3" style='position:absolute; top:35; left:5;'>"Alert text"<p>
+	<button id="dismiss" onclick="dismissAlert()" style='position:absolute; height:20px; width:75; top:85px; left:5px;'>Dismiss</button>
+</div>
+		<script src='renderer.js'></script>
+	</div>
+</body>
+</html>
