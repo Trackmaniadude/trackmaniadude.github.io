@@ -3,12 +3,27 @@
 	color: white;
 }
 #leftsidebar {
-	background-color: #333333;
+	background-color: #111;
 	position: fixed;
 	width: 250px;
 	height: 100%;
 	left: 0;
 	top: 0;
+	overflow-y: auto;
+}
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px #000; 
+    background: #222; 
+}
+::-webkit-scrollbar-thumb {
+	box-shadow: 0 0 5px #000; 
+    background: #151515; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #292929; 
 }
 #main {
 	position: fixed;
@@ -31,19 +46,18 @@
 	border: 5px solid black;
 	box-shadow: 0px 10px 15px #000000;
 }
-.sidetext {
-	box-shadow: 0px 10px #111111;
-	margin: 0px;
-	padding: 15px;
-	text-align: center;
-	background-color: #222222;
-}
 .sideheader {
-	box-shadow: 0px 10px #001122;
 	margin: 0px;
 	padding: 15px;
 	text-align: center;
 	background-color: #00AAFF;
+}
+.sidetext {
+	margin: 0px;
+	margin-top: 1px;
+	padding: 15px;
+	text-align: center;
+	background-color: #222222;
 }
 .sidebutton {
 	background-color: #004477;
@@ -55,9 +69,7 @@
 	text-align: center;
 	width: 100%;
 	transition-duration: 0.1s;
-	box-shadow: 0px 10px #001122, -10px 10px #111111;
 }
 .sidebutton:hover {
-	margin-left: 10px;
 	background-color: #3366AA;
 }
