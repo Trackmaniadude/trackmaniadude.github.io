@@ -73,3 +73,40 @@
 .sidebutton:hover {
 	background-color: #3366AA;
 }
+#largetext {
+	margin: 20px;
+}
+#largetextheader {
+	margin: none;
+	padding: 20px;
+	font-size: 32px;
+	background-color: #09C;
+}
+#largetextimg {
+	margin: none;
+	position: relative;
+	top: -37px;
+	margin-top: 10px;
+	background-color: #333;
+	width: 100%;
+}
+#largetextbody {
+	position: relative;
+	top: -42px;
+	margin: none;
+	margin-top: 10px;
+}
+.largetextbodysection {
+	margin: none;
+	margin-top: 5px;
+	background-color: #111;
+	padding: 10px;
+}
+.largetextbodysection p {
+	margin: 10px;;
+	font-family: Arial, Charcoal, sans-serif;
+}
+.largetextbodysectionheader {
+	font-size: 32px;
+	font-weight: bold;
+}
