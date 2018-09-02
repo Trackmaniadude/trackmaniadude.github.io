@@ -18,23 +18,6 @@
 				top: 0;
 			}
 			
-			button {
-				background-color: #004477;
-				margin: 0px;
-				margin-top: 1px;
-				padding: 15px;
-				border: none;
-				outline: none;
-				text-align: center;
-				width: 100%;
-				transition-duration: 0.1s;
-				box-shadow: 0px 10px #001122, -10px 10px #111111;
-			}
-			button:hover {
-				margin-left: 10px;
-				background-color: #3366AA;
-			}
-			
 			#main {
 				position: fixed;
 				width: calc(100% - 250px);
@@ -57,28 +40,58 @@
 				border: 5px solid black;
 				box-shadow: 0px 10px 15px #000000;
 			}
+			.sidetext {
+				box-shadow: 0px 10px #111111;
+				margin: 0px;
+				padding: 15px;
+				text-align: center;
+				background-color: #222222;
+			}
+			.sideheader {
+				box-shadow: 0px 10px #001122;
+				margin: 0px;
+				padding: 15px;
+				text-align: center;
+				background-color: #00AAFF;
+			}
+			.sidebutton {
+				background-color: #004477;
+				margin: 0px;
+				margin-top: 1px;
+				padding: 15px;
+				border: none;
+				outline: none;
+				text-align: center;
+				width: 100%;
+				transition-duration: 0.1s;
+				box-shadow: 0px 10px #001122, -10px 10px #111111;
+			}
+			.sidebutton:hover {
+				margin-left: 10px;
+				background-color: #3366AA;
+			}
 		</style>
 	</head>
 	<body background="bg.png">
 		<script src="main.js"></script>
 		<div id="leftsidebar">
-			<p style="box-shadow: 0px 10px #001122; margin: 0px; padding: 15px; text-align: center; background-color: #00AAFF;">Trackmaniadude's Site</p>
-			<p style="box-shadow: 0px 10px #001122; margin: 0px; padding: 15px; text-align: center; background-color: #222222;">Links</p>
-			<a onmouseover="setIMG('')" href="https://soundation.com/user/Trackmaniadude"><button style="background-image: url(); background-position: 10px center; background-repeat: no-repeat;">Music</button></a>
-			<p style="box-shadow: 0px 10px #001122; margin: 0px; padding: 15px; text-align: center; background-color: #222222;">Games</p>
-			<a onmouseover="setIMG('/Drones.io/Dronesio.html')" href="/Drones.io/Dronesio.html"><button style="background-image: url(drones.png); background-position: 10px center; background-repeat: no-repeat;">Drones.io</button></a>
-			<a onmouseover="setIMG('gaem/tunnelflyer.html')" href="gaem/tunnelflyer.html"><button style="background-image: url(); background-position: 10px center; background-repeat: no-repeat;">Tunnel Flyer</button></a>
-			<p style="box-shadow: 0px 10px #001122; margin: 0px; padding: 15px; text-align: center; background-color: #222222;">Tools</p>
-			<a onmouseover="setIMG('TDSM/tdsm.html')" href="TDSM/tdsm.html"><button style="background-image: url(diep.png); background-position: 10px center; background-repeat: no-repeat;">Diep.io Scene Maker</button></a>
-			<a onmouseover="setIMG('FTB/ftb.html')" href="FTB/ftb.html"><button style="background-image: url(diep.png); background-position: 10px center; background-repeat: no-repeat;">Fantasy Tank Builder</button></a>
-			<a onmouseover="setIMG('DSM/dsm.html')" href="DSM/dsm.html"><button style="background-image: url(diep.png); background-position: 10px center; background-repeat: no-repeat;">Old Diep.io Scene Maker</button></a>
+			<p class="sideheader">Trackmaniadude's Site</p>
+			<p class="sidetext">Links</p>
+			<a onmouseover="setIMG('')" href="https://soundation.com/user/Trackmaniadude"><button class="sidebutton">Music</button></a>
+			<p class="sidetext">Games</p>
+			<a onmouseover="setIMG('/Drones.io/Dronesio.html')" href="/Drones.io/Dronesio.html"><button class="sidebutton">Drones.io</button></a>
+			<a onmouseover="setIMG('gaem/tunnelflyer.html')" href="gaem/tunnelflyer.html"><button class="sidebutton">Tunnel Flyer</button></a>
+			<p class="sidetext">Tools</p>
+			<a onmouseover="setIMG('TDSM/tdsm.html')" href="TDSM/tdsm.html"><button class="sidebutton">Diep.io Scene Maker</button></a>
+			<a onmouseover="setIMG('FTB/ftb.html')" href="FTB/ftb.html"><button class="sidebutton">Fantasy Tank Builder</button></a>
+			<a onmouseover="setIMG('DSM/dsm.html')" href="DSM/dsm.html"><button class="sidebutton">Old Diep.io Scene Maker</button></a>
 			<p style="box-shadow: 0px 10px #001122; margin: 0px; padding: 15px; text-align: center; background-color: #222222;">Randoms</p>
-			<a onmouseover="setIMG('Fidgets/main.html')" href="Fidgets/main.html"><button style="background-image: url(spinner.png); background-position: 10px center; background-repeat: no-repeat;">Fidgets</button></a>
-			<a onmouseover="setIMG('')" href="REALLY/really.html"><button style="background-image: url(); background-position: 10px center; background-repeat: no-repeat;">REALLY REALLY</button></a>
-			<a onmouseover="setIMG('')" href="SNOOOOOOOOOOOOOOOOOOOP/snooooooop.html"><button style="background-image: url(); background-position: 10px center; background-repeat: no-repeat;">SNOOOOOOOOOOP</button></a>
+			<a onmouseover="setIMG('Fidgets/main.html')" href="Fidgets/main.html"><button class="sidebutton">Fidgets</button></a>
+			<a onmouseover="setIMG('')" href="REALLY/really.html"><button class="sidebutton">REALLY REALLY</button></a>
+			<a onmouseover="setIMG('')" href="SNOOOOOOOOOOOOOOOOOOOP/snooooooop.html"><button class="sidebutton">SNOOOOOOOOOOP</button></a>
 		</div>
-		<div id="main">
-			<iframe id="img" src=""></iframe>
+		<div id="main" class="__web-inspector-hide-shortcut__">
+			<iframe id="img" src="" style="opacity: 1;"></iframe>
 		</div>
 	</body>
 </html>
