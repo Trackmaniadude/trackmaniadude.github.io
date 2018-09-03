@@ -32,7 +32,7 @@ texts[2]=[
 	[
 		[
 			"Fly through enclosed spaces!",
-			"Inspired by an old flash game I do not remember the name of, in this game you take control of a space ship. You fly through tunnel, speeding up and dodging obstacles as you go along."
+			"Inspired by an old flash game I do not remember the name of, in this game you take control of a space ship. You fly through a tunnel, speeding up and dodging obstacles as you go along."
 		]
 	]
 ]
