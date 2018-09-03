@@ -36,6 +36,45 @@ texts[2]=[
 		]
 	]
 ]
+texts[3]=[
+	"DIEP SCENE MAKER",
+	"",
+	[
+		[
+			"",
+			"Do you know the game Diep.io? This is a tool for making scenes based off of that game. This originally wasn't mine, but has been heavily modified."
+		]
+	]
+]
+texts[4]=[
+	"FANTASY TANK BUILDER",
+	"ftbimg.png",
+	[
+		[
+			"OMG HEXADECATANK SO POWERFUL!!!",
+			"A modified version of a tool for creating Diep.io tank concepts. It's not as up to date as the original and only has some extra random shapes, so the original (at iblobtouch.github.io) is recommended."
+		]
+	]
+]
+texts[5]=[
+	"OLD DIEP SCENE MAKER",
+	"dsmimg.png",
+	[
+		[
+			"",
+			"Older version of the Diep Scene Maker that has been kept around for some reason. Looks much closer to the original."
+		]
+	]
+]
+texts[6]=[
+	"",
+	"",
+	[
+		[
+			""
+		]
+	]
+]
 
 var active = false
 
