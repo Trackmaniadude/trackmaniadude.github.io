@@ -67,11 +67,12 @@ texts[5]=[
 	]
 ]
 texts[6]=[
-	"",
+	"YOUTUBE",
 	"",
 	[
 		[
-			""
+			"Such Video",
+			"There isn't anything specific here, just a mix of music, animations, Minecraft, and other random stuff."
 		]
 	]
 ]
@@ -79,40 +80,42 @@ texts[6]=[
 var active = false
 
 function setIMG(id) {
-	var largetextbody = document.getElementById("largetextbody");
-	var largetexthead = document.getElementById("largetextheader");
-	var largetextimage = document.getElementById("largetextimg");
+	if (id!=-1) {
+		var largetextbody = document.getElementById("largetextbody");
+		var largetexthead = document.getElementById("largetextheader");
+		var largetextimage = document.getElementById("largetextimg");
 
-	var txt = texts[id];
-	var head = txt[0];
-	var img = txt[1];
-	var body = txt[2];
-	
-	largetexthead.innerHTML = head;
-	largetextimage.src = img;
-	
-	if (img == "") {
-		largetextimage.style.visibility = "hidden";
-		largetextimage.style.height = "0";
-	}else{
-		largetextimage.style.visibility = "visible";
-		largetextimage.style.height = "unset";
-	}
-	
-	var fulltext = "";
-	for (i=0;i<body.length;i++) {
-		var bodytext = '<div class="largetextbodysection">';
-		for (j=0;j<body[i].length;j++) {
-			if (j==0) {
-				if (body[i][j] !== "") {
-					bodytext = bodytext + '<p class="largetextbodysectionheader">'+body[i][j]+'</p>';
-				}
-			}else{
-				bodytext = bodytext + '<p>'+body[i][j]+'</p>';
-			}
+		var txt = texts[id];
+		var head = txt[0];
+		var img = txt[1];
+		var body = txt[2];
+
+		largetexthead.innerHTML = head;
+		largetextimage.src = img;
+
+		if (img == "") {
+			largetextimage.style.visibility = "hidden";
+			largetextimage.style.height = "0";
+		}else{
+			largetextimage.style.visibility = "visible";
+			largetextimage.style.height = "unset";
 		}
-		fulltext = fulltext + bodytext + '</div>';
-	}
 
-	largetextbody.innerHTML = fulltext;
+		var fulltext = "";
+		for (i=0;i<body.length;i++) {
+			var bodytext = '<div class="largetextbodysection">';
+			for (j=0;j<body[i].length;j++) {
+				if (j==0) {
+					if (body[i][j] !== "") {
+						bodytext = bodytext + '<p class="largetextbodysectionheader">'+body[i][j]+'</p>';
+					}
+				}else{
+					bodytext = bodytext + '<p>'+body[i][j]+'</p>';
+				}
+			}
+			fulltext = fulltext + bodytext + '</div>';
+		}
+
+		largetextbody.innerHTML = fulltext;
+	}
 }
