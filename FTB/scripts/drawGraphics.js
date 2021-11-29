@@ -3,7 +3,7 @@ function drawBarrel(a, xoffset, yoffset, width, length, alpha, isghost, type) {
 	ctx.strokeStyle = "#555555";
 	ctx.lineWidth = 5;
 	ctx.fillStyle = document.getElementById("colo2").value;
-	ctx.translate(tankpointx, tankpointy, 0);
+	ctx.translate(tankpointx, tankpointy);
 	if (editmode === false) {
 		ctx.rotate((angle(tankpointx, tankpointy, mouse.x, mouse.y) + a) * (Math.PI / 180));
 	} else if ((isghost === true) && (shiftheld === true)) {
