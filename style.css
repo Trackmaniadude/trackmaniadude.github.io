@@ -75,11 +75,11 @@ a:visited {
 	width: 400px;
 }
 
-.coding-link {
+.link-box {
 	color: var(--text-color) !important;
 }
 
-.coding-link h3:hover {
+.link-box h3:hover {
 	background: var(--bg-header-highlight) !important;
 	background-attachment: fixed !important;
 	/* animation-duration: 250ms !important; */
