@@ -2,6 +2,12 @@ const options = { dateStyle: "long" };
 
 const codingData = [
 	{
+		header: "2024 CS Voxel Project",
+		thumb: "Images/Thumbnails/voxels.png",
+		link: "Projects/VoxelTest/voxel.html",
+		body: "This was for a computer graphics class. Not original in the slightest, but I made it."
+	},
+	{
 		header: "Sonic Game (WIP)",
 		thumb: "Images/Thumbnails/sonicGame.webp",
 		link: "https://www.roblox.com/games/10410749892/Sonic-Game-WIP",

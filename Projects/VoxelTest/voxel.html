@@ -1,0 +1,159 @@
+<html>
+<head>
+	<!-- vertex Shader -->
+	<!-- todo: put this stuff in its own file probably idk lmao -->
+    <script id="shader" type="wgsl">
+        struct VertexOutput {
+		    @builtin(position) aVertexPosition: vec4<f32>,
+		    @location(0) bary: vec3<f32>,
+		};
+
+        struct CameraData {
+			translation	: vec4<f32>,
+            rotation 	: vec4<f32>,
+			zoom		: f32
+        };
+
+        @group(0) @binding(0) var<uniform> cameraData : CameraData;
+
+        @vertex
+            fn vs_main(
+                @location(0) inPos: vec3<f32>,
+        @location(1) bary : vec3<f32>) -> VertexOutput {
+            var out: VertexOutput;
+            // Compute the sines and cosines of each rotation
+            // about each axis - must be converted into radians first
+            var c = cos(cameraData.rotation);
+            var s = sin(cameraData.rotation);
+			
+			var t = (cameraData.translation);
+
+            // Translation matrix
+            var trans = mat4x4<f32> (
+				1.0,  0.0,  0.0,  0.0,
+				0.0,  1.0,  0.0,  0.0,
+				0.0,  0.0,  1.0,  0.0,
+				t.x,  t.y,  t.z,  1.0
+			);
+			
+			// This one's just so the rotation is at the camera rather than in front of it for some reason
+            var trans2 = mat4x4<f32> (
+				1.0,  0.0,  0.0,  0.0,
+				0.0,  1.0,  0.0,  0.0,
+				0.0,  0.0,  1.0,  0.0,
+				0.0,  0.0,  -1.,  1.0
+			);
+			
+            // Rotation matrices
+            var rx = mat4x4<f32> (
+				1.0,  0.0,  0.0,  0.0,
+				0.0,  c.x,  s.x,  0.0,
+				0.0, -s.x,  c.x,  0.0,
+				0.0,  0.0,  0.0,  1.0
+			);
+
+            var ry = mat4x4<f32> (
+				c.y,  0.0, -s.y,  0.0,
+				0.0,  1.0,  0.0,  0.0,
+				s.y,  0.0,  c.y,  0.0,
+				0.0,  0.0,  0.0,  1.0
+			);
+
+            //var rz = mat4x4<f32> (
+			//	c.z,  s.z,  0.0,  0.0,
+			//	-s.z,  c.z,  0.0,  0.0,
+			//	0.0,  0.0,  1.0,  0.0,
+			//	0.0,  0.0,  0.0,  1.0
+			//);
+			
+			// Perspective matrix
+			// I thought the math would be harder
+			var persp = mat4x4<f32> (
+				0.75,  0.0,  0.0,  0.0,	// The 0.75 accounts for my viewport being 4:3.
+				0.0,  1.0,  0.0,  0.0,
+				0.0,  0.0,  1.0,  1.0,	// I'm not entirely sure how the w component makes perspective, but > 1 increases fov and < 1 breaks it.
+				0.0,  0.0,  0.75,  1.0	// Z is z clipping, not entirely sure how it maps to the far clip plane though.
+			);
+
+            out.aVertexPosition = persp * trans2 * rx * ry * trans * vec4<f32>(inPos.x, inPos.y, inPos.z, 1);
+            out.bary = bary;
+            return out;
+	    }
+
+        @group(0) @binding(1) var ourSampler: sampler;
+		@group(0) @binding(2) var ourTexture: texture_2d<f32>;
+
+	    @fragment
+	    fn fs_main(in: VertexOutput) -> @location(0) vec4<f32> {
+			//var fragColor = vec4<f32> (1.0, 1.0, 1.0, 1.0 );
+			//var fragColor = vec4<f32> (in.bary.x, in.bary.y, in.bary.z, 1.0 );
+			//var fragColor = vec4<f32> (in.aVertexPosition.x, in.aVertexPosition.y, in.aVertexPosition.z, 1.0 );
+			//var fragColor = vec4<f32> (in.bary.x, in.bary.y, in.bary.z, 1.0 );
+			// if on the edge, draw black, otherwsie, draw grey
+			//if (in.bary.x < 0.03 || in.bary.y < 0.03 || in.bary.z < 0.03) {
+			//    fragColor = vec4 (1.0, 1.0, 1.0, 1.0);
+			//}
+			var fragColor = textureSample(ourTexture, ourSampler, in.bary.xy) * in.bary.z;
+			return fragColor;
+			
+			//return textureSample(ourTexture, ourSampler, in.bary.xy);
+        }
+    </script>
+
+	<!-- noise -->
+    <script type="text/javascript" src="./perlin.js"></script>
+
+	<!-- mesh generation -->
+    <script type="text/javascript" src="./generation.js"></script>
+    <!-- <script type="text/javascript" src="./cgIShape.js"></script> -->
+
+    <!-- rendering function -->
+    <script type="text/javascript" src="./rendering.js"></script>
+	
+	<script type="text/javascript">
+        // Call init once the webpage has loaded
+        window.onload = init;
+    </script>
+</head>
+
+<h1>CSCI 510 - VOXEL PROJECT</h1>
+<p>yeah this is a cs graphics project, i wanted to put it up</p>
+<p id="fps">(this aint working) fps</p>
+
+<canvas id="webgpu" width=800 height=600 style="background-color: black;">
+Your browser does not support the HTML5 canvas element.
+</canvas>
+
+<h2>todo list lmao</h2>
+<ul>
+<li>[x] mesh generation cpu</li>
+<li>[ ] mesh generation gpu?</li>
+<li>[ ] voxel generation cpu</li>
+<li>[ ] voxel generation gpu?</li>
+<li>[ ] textures<ul>
+	<li>[x] render a texture</li>
+	<li>[x] texture from image</li>
+	<li>[x] texture atlas</li>
+</ul></li>
+<li>[ ] "Ambient Occlusion"</li>
+<li>[x] Fake lighting</li>
+<li>[x] Skybox<ul>
+	<li>[-] Skybox moves with camera<ul>
+		<li>Ok so I just made it extremely big. Also works.</li>
+	</ul></li>
+</ul></li>
+<li>[ ] Less fake sun lighting<ul>
+	<li>[ ] STRETCH: Shadows? I know the basics of how they work.</li>
+	<li>[ ] Roughness maps</li>
+</ul></li>
+<li>[ ] more interesting textures (fun water shader maybe?)</li>
+<li>[x] perspective camera<ul>
+	<li>[x] make the clipping like actually work</li>
+</ul></li>
+<li>[x] camera controls<ul>
+	<li>[x] make them not world space</li>
+</ul></li>
+<li>[ ] fix vertex buffer not having enough space for larger objects</li>
+</ul>
+
+</html>
