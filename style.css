@@ -82,7 +82,7 @@ a:visited {
 .link-box h3:hover {
 	background: var(--bg-header-highlight) !important;
 	background-attachment: fixed !important;
-	/* animation-duration: 250ms !important; */
+	animation-duration: 250ms !important;
 }
 
 h1 {

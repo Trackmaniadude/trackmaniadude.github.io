@@ -6,24 +6,24 @@
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
 	<title>Trackmaniadude's Site</title>
 	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <template id="TEMPLATE_LINK_BOX">
-	<div class="body-grid-item coding-box">
-		<a class="link-box" href="LINK">
-			<h3 style="margin:0;">HEADER</h3>
-		</a>
-		<!-- Tomfoolery to put an inset shadow on an image. -->
-		<div style="position: relative; height: 0; width: 0;">
-			<div style="position: position; height: 200px; width: 400px; box-shadow: inset 0 0px 30px 0px black;">
+	<a class="body-grid-item coding-box link-box" href="LINK">
+		<h3 style="margin:0;">HEADER</h3>
+		<!-- <div style="width: 100%; height: 0; object-fit: cover;">
+			<div style="position: position; aspect-ratio: calc(16/9); width: 100%; box-shadow: inset 0 0px 30px 0px black;">
+
 			</div>
+		</div> -->
+		<div style="width: 100%; aspect-ratio: calc(16/9); object-fit: cover;">
+			<img src="THUMB" style="width: 100%; height: 100%;">
 		</div>
-		<!-- Done -->
-		<img src="THUMB" style="width: 400px; height: 200px; object-fit: cover;">
 		<div class="body-area">
 			<p>BODY</p>
 		</div>
-	</div>
+	</a>
 </template>
 
 <body onload="handleOnLoad()">
@@ -39,7 +39,8 @@
 	<h1 style="margin-top: 0">TRACKMANIADUDE</h1>
 	<h2>ABOUT</h2>
 	<div class="body-area">
-		<p>Maker of various digital objects. Mostly music and game dev, with some animation thrown in for good measure.</p>
+		<p>Maker of various digital objects. Mostly music and game dev, with some animation thrown in for good measure.
+		</p>
 	</div>
 	<div class="body-area body-flex">
 		<div class="body-flex-item" style="flex: 4 0 auto; width: min-content;">
@@ -82,7 +83,8 @@
 					This is a non-exhaustive list of music I have created.
 					<br><br>
 					Genres usually tend to be somewhere in the EDM range, although there is often rock/metal influence,
-					alongside other genres. I often get <a href="https://www.youtube.com/watch?v=7ezvi46qp6E">weird and experimental</a>.
+					alongside other genres. I often get <a href="https://www.youtube.com/watch?v=7ezvi46qp6E">weird and
+						experimental</a>.
 					<br><br>
 					It's not like I'm any good at figuring out genres anyways.
 					<br><br>
@@ -177,7 +179,8 @@
 				<ul>
 					<li>Animations
 						<ul>
-							<li><a href="https://www.youtube.com/watch?v=Hd6S-hj2NJs">Xurant | Animated Music Video</a></li>
+							<li><a href="https://www.youtube.com/watch?v=Hd6S-hj2NJs">Xurant | Animated Music Video</a>
+							</li>
 							<li><a href="https://www.youtube.com/watch?v=586tSM1rQvs">Tropics | Animated music video</a>
 								<ul>
 									<li>Procedurally animated music video, inspired by Animusic.</li>
