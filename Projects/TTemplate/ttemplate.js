@@ -1,4 +1,5 @@
 const TEMPLATE_PREFIX = "T-";
+const MAX_TRIES = 10;
 
 function generate() {
     // Get templates
@@ -14,14 +15,15 @@ function generate() {
     // Generate templates
     // Repeat until none can be found
     // TODO: this needs a way to limit recursion
-    let createdElements = false;
-    while (true) {
-        if (createdElements) {break;}
+    let createdElements = true;
+    for (let i = 0; i < MAX_TRIES; i++) {
+        if (!createdElements) {break;}
         for (const template of ttemplates) {
             elements = [];
             for (const element of document.getElementsByTagName(template.id.toLowerCase())) {
                 elements.push(element);
             }
+            createdElements = false;
             for (const element of elements) {
                 createdElements = true;
                 let attributes = element.attributes;
