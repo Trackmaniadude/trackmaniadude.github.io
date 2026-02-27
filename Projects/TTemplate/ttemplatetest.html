@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+
+<template id="T-LINK_BOX">
+	<a class="body-grid-item coding-box link-box" href="{LINK}">
+		<h3 style="margin:0;">{NAME}</h3>
+		<div style="width: 100%; aspect-ratio: calc(16/9); object-fit: cover;">
+			<img src="{THUMB}" style="width: 100%; height: 100%;">
+		</div>
+		<div class="body-area">
+			<p>{INNER_HTML}</p>
+		</div>
+	</a>
+</template>
+
+
+<body>
+    <T-LINK_BOX thumb="Images/carsilhouette" link="invalid ideally" name="THE J 1">A description. Did you know that teeth?</T-LINK_BOX>
+    <T-LINK_BOX thumb="Images/carsilhouette" link="invalid ideally" name="THE J 2">A description. Did you know that teeth?</T-LINK_BOX>
+    <T-LINK_BOX thumb="Images/carsilhouette" link="invalid ideally" name="THE J 3">A description. Did you know that teeth?</T-LINK_BOX>
+
+	<script src='ttemplate.js'></script>
+</body>
+
+
+</html>
