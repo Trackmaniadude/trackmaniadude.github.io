@@ -9,24 +9,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<template id="TEMPLATE_LINK_BOX">
-	<a class="body-grid-item coding-box link-box" href="LINK">
-		<h3 style="margin:0;">HEADER</h3>
+<template id="T-LINK_BOX">
+	<a class="body-grid-item coding-box link-box" href="{LINK}">
+		<h3 style="margin:0;">{NAME}</h3>
 		<!-- <div style="width: 100%; height: 0; object-fit: cover;">
 			<div style="position: position; aspect-ratio: calc(16/9); width: 100%; box-shadow: inset 0 0px 30px 0px black;">
 
 			</div>
 		</div> -->
 		<div style="width: 100%; aspect-ratio: calc(16/9); object-fit: cover;">
-			<img src="THUMB" style="width: 100%; height: 100%;">
+			<img src="{THUMB}" style="width: 100%; height: 100%;">
 		</div>
 		<div class="body-area">
-			<p>BODY</p>
+			<p>{INNER_HTML}</p>
 		</div>
 	</a>
 </template>
 
-<body onload="handleOnLoad()">
+<body>
 	<img style="
 				position: absolute;
 				top: 0px;
@@ -51,7 +51,44 @@
 					am primarily experienced with LUA, because of Roblox's usage of the language, but have programmed in
 					a variety of other languages, mostly for learning purposes.
 				</p>
-				<div id="codingProjectsList" class="body-grid"></div>
+				<div class="body-grid">
+					<T-LINK_BOX name="2024 CS Voxel Project" link="Projects/VoxelTest/voxel.html"
+						thumb="Images/Thumbnails/voxels.png">
+						This was for a computer graphics class. Not original in the slightest, but I made it.
+					</T-LINK_BOX>
+					<T-LINK_BOX name="Sonic Game (WIP)" link="https://www.roblox.com/games/10410749892/Sonic-Game-WIP"
+						thumb="Images/Thumbnails/sonicGame.webp">
+						A currently in progress Sonic fan game, built after making a 3D recreation/extension of the
+						original game's physics.
+					</T-LINK_BOX>
+					<T-LINK_BOX name="Trackmania Roblox: City"
+						link="https://www.roblox.com/games/2463985554/Trackmania-Roblox-City"
+						thumb="Images/Thumbnails/TMRC.webp">
+						Partially finished Trackmania fan game. One of the main features of the game (both this and the
+						original) is the built in track editor, in which all tracks in the game are made. I had to
+						figure out data serialization to make this work (fairly basic though, tracks are stored as JSON
+						objects).
+					</T-LINK_BOX>
+					<T-LINK_BOX name="Terrain Gen V3"
+						link="https://www.roblox.com/games/6942187484/Trackmaniadudes-Place-Number-74"
+						thumb="Images/Thumbnails/terrainv3.png">
+						Exactly as titled, my third try at procedurally generated terrain.
+					</T-LINK_BOX>
+					<T-LINK_BOX name="Arctic's Roleplay" link="https://www.roblox.com/games/394296482/Arctics-Roleplay"
+						thumb="Images/Thumbnails/arctics.png">
+						Exactly as titled, my third try at procedurally generated terrain.
+					</T-LINK_BOX>
+					<T-LINK_BOX name="CONTRAST" link="https://www.roblox.com/games/13534188441/CONTRAST-WIP"
+						thumb="Images/Thumbnails/contrast.webp">
+						Ship racing game that I randomly had the urge to make summer of 2023. Not exactly complete, but
+						works. Roads are generated dynamically, based on splines and some procedural code.
+					</T-LINK_BOX>
+					<T-LINK_BOX name="Roller Coasters" link="ttps://www.roblox.com/games/1092568012/Roller-Coasters"
+						thumb="Images/Thumbnails/coasters.webp">
+						More spline based procedural generation (although this is 2017-2020, not 2023), just a bunch of
+						roller coasters. Never figured out how to get multiple cars in a train.
+					</T-LINK_BOX>
+				</div>
 				<p>
 					There was a time where I messed around with Scratch a lot, so here's a selection of some notable or
 					interesting projects.
@@ -223,6 +260,7 @@
 	</div>
 
 	<script src='main.js'></script>
+	<script src='Projects/TTemplate/ttemplate.js'></script>
 </body>
 
 </html>
